@@ -24,7 +24,7 @@ public class UnitList extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(getApplicationContext(), UnitPlan.class);
+                        Intent intent = new Intent(getApplicationContext(), UnitDetailList.class);
                         intent.putExtra("itemPosition", i);
                         startActivity(intent);
                     }
