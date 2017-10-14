@@ -12,7 +12,7 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 public class UnitDetailList extends AppCompatActivity {
 
     private MapView mapView;
-
+    //Test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
