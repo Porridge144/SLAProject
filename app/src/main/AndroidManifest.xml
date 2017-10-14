@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gszzz.slaproject">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -26,14 +28,13 @@
         </activity>
         <activity android:name=".UnitList" />
         <activity android:name=".UnitPlan" />
-        <activity android:name=".RoomSurveyList"></activity>
+        <activity android:name=".RoomSurveyList" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDZc0-cIJ66-ojoujwBFsponokxqZJzLYE"/>
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="AIzaSyDZc0-cIJ66-ojoujwBFsponokxqZJzLYE"/> -->
 
+        <activity android:name=".UnitDetailList"></activity>
     </application>
-
-
 
 </manifest>

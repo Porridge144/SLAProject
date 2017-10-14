@@ -22,16 +22,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class UnitPlan extends AppCompatActivity implements OnMapReadyCallback{
+public class UnitPlan extends AppCompatActivity{
 
     private int position;
     private ImageView imageView;
@@ -41,29 +35,6 @@ public class UnitPlan extends AppCompatActivity implements OnMapReadyCallback{
     private RelativeLayout relativeLayout;
 
 
-    GoogleMap googleMap;
-    MapView mapView;
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        this.googleMap = googleMap;
-        LatLng palmGreen = new LatLng(1.2915494,103.7674613);
-
-        try {
-            checkFineLocationPermission();
-            googleMap.setMyLocationEnabled(true);
-        } catch (SecurityException e) {
-            Toast.makeText(getApplicationContext(), "Permission not granted in fine location.\nRequesting for permission...", Toast.LENGTH_SHORT).show();
-//            this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
-        }
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(palmGreen, 13));
-
-        googleMap.addMarker(new MarkerOptions()
-                .title("Palm Green")
-                .snippet("Happy Poison Cancer Place....")
-                .position(palmGreen));
-    }
 
     //Check for permission
     private void checkFineLocationPermission() {
@@ -88,10 +59,7 @@ public class UnitPlan extends AppCompatActivity implements OnMapReadyCallback{
         relativeLayout = (RelativeLayout) findViewById(R.id.floorplanRLayout);
 
         //Google Map
-        mapView = (MapView) findViewById(R.id.mapView);
-        mapView.onCreate(null);
-        mapView.onResume();
-        mapView.getMapAsync(this);
+
     }
 
 

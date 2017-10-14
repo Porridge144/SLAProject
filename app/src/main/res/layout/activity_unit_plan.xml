@@ -17,12 +17,4 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/room_plan_example" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp" />
-
 </RelativeLayout>
