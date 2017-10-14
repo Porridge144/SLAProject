@@ -7,12 +7,11 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class RoomSurveyList extends AppCompatActivity {
+public class BuildingDetailForm extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     LinearLayout picturesLinearLayout;
@@ -20,7 +19,7 @@ public class RoomSurveyList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_survey_list);
+        setContentView(R.layout.activity_building_detail_form);
 
         picturesLinearLayout = (LinearLayout) findViewById(R.id.picturesLinearLayout);
         Button cameraButton = (Button) findViewById(R.id.takePictureButton);

@@ -1,20 +1,16 @@
 package com.example.gszzz.slaproject;
 
-import android.Manifest;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -22,10 +18,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.util.ArrayList;
 
-public class UnitPlan extends AppCompatActivity{
+public class LevelPlan extends AppCompatActivity{
 
     private int position;
     private ImageView imageView;
@@ -34,9 +29,11 @@ public class UnitPlan extends AppCompatActivity{
     private int x, y;
     private RelativeLayout relativeLayout;
 
+    private static int roomCount = 1, kitchenCount = 1, toiletCount = 1, othersCount = 1;
+    private ArrayList<View> viewArrayList = new ArrayList<>();
 
 
-    //Check for permission
+/*    //Check for permission
     private void checkFineLocationPermission() {
         int permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
         if (permissionCheck != 0) {
@@ -44,12 +41,12 @@ public class UnitPlan extends AppCompatActivity{
         } else {
 //            Toast.makeText(getApplicationContext(), "SDK version < LOLIPOP. No need permission check.", Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_unit_plan);
+        setContentView(R.layout.activity_level_plan);
 
         //Which item got clicked
         Intent i = getIntent();
@@ -71,9 +68,6 @@ public class UnitPlan extends AppCompatActivity{
         this.x = x;
         this.y = y;
         if (event.getAction() == MotionEvent.ACTION_DOWN ) {
-//            int[] coord = new int[2];
-//            imageView.getLocationOnScreen(coord);
-//            Toast.makeText(getApplicationContext(), x + "," + y + "\n" + coord[0] + "," + coord[1], Toast.LENGTH_SHORT).show();
             if (getLocationOnScreen(imageView).contains(x, y)) {
                 showOptionListView();
             } else {
@@ -99,7 +93,7 @@ public class UnitPlan extends AppCompatActivity{
     }
 
     private void showOptionListView() {
-        String[] options = {"Room", "Facade"};
+        String[] options = {"Kitchen", "Toilet", "Room", "Others"};
         ListAdapter optionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, options);
         ListView optionListView = new ListView(this);
         optionListView.setAdapter(optionAdapter);
@@ -109,11 +103,11 @@ public class UnitPlan extends AppCompatActivity{
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                        Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                         optionChosen = String.valueOf(adapterView.getItemAtPosition(i));
-                        showInputBox();
+                        renderLabel(optionChosen);
                     }
                 }
         );
-        AlertDialog.Builder builder = new AlertDialog.Builder(UnitPlan.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(LevelPlan.this);
         builder.setTitle("Select type");
         builder.setCancelable(true);
         builder.setView(optionListView);
@@ -121,10 +115,10 @@ public class UnitPlan extends AppCompatActivity{
         dialog.show();
     }
 
-    private void showInputBox() {
+/*    private void showInputBox() {
         final EditText editText = new EditText(this);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
-        AlertDialog.Builder builder = new AlertDialog.Builder(UnitPlan.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(LevelPlan.this);
         builder.setTitle("Enter label");
         builder.setCancelable(true);
         builder.setView(editText);
@@ -148,10 +142,30 @@ public class UnitPlan extends AppCompatActivity{
         });
         builder.create().show();
 
-    }
+    }*/
 
     private void renderLabel(String label) {
-        String labelString = optionChosen  + "_" + label;
+
+        String labelString = "";
+        switch (label) {
+            case "Kitchen" :
+                labelString = optionChosen  + " " + kitchenCount;
+                kitchenCount += 1;
+                break;
+            case "Toilet" :
+                labelString = optionChosen  + " " + toiletCount;
+                toiletCount += 1;
+                break;
+            case "Room" :
+                labelString = optionChosen  + " " + roomCount;
+                roomCount += 1;
+                break;
+            case "Others" :
+                labelString = optionChosen  + " " + othersCount;
+                othersCount += 1;
+                break;
+        }
+
         dialog.dismiss();
 
         final TextView textView = new TextView(this);
@@ -162,7 +176,7 @@ public class UnitPlan extends AppCompatActivity{
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RoomSurveyList.class);
+                Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
                 intent.putExtra("labelString", textView.getText().toString());
                 startActivity(intent);
             }
@@ -173,6 +187,8 @@ public class UnitPlan extends AppCompatActivity{
         );
         layoutParams.leftMargin = this.x - 9 * (5 + label.length());
         layoutParams.topMargin = this.y - 209 - 15;
+
+        viewArrayList.add(textView);
 
         relativeLayout.addView(textView, layoutParams);
 

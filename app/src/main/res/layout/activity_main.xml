@@ -9,22 +9,23 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="171dp"
         android:text="WELCOME"
-        android:textSize="36sp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
         tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="248dp" />
+        tools:layout_editor_absoluteY="248dp"
+        android:layout_marginBottom="66dp"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="84dp"
-        android:onClick="EnterOnclick"
-        android:text="Enter Unit List" />
+        android:layout_marginBottom="202dp"
+        android:onClick="nextStepOnclick"
+        android:text="Next Step" />
 
 </RelativeLayout>

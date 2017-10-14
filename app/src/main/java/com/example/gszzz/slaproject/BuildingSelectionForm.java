@@ -5,16 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class BuildingSelectionForm extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_building_selection_form);
+
     }
 
-    public void nextStepOnclick(View view) {
-        Intent i = new Intent(this, BuildingSelectionForm.class);
-        startActivity(i);
+
+    public void nextStepOnClicked(View view) {
+        Intent intent = new Intent(this, PreInfoForm.class);
+        startActivity(intent);
     }
 }
