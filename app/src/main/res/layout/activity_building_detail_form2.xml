@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gszzz.slaproject.BuildingDetailForm2">
+
+    <TextView
+        android:id="@+id/elementTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Element"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/elementTextView"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="-3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Material"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="timberButtonOnClicked"
+                android:text="Timber" />
+
+            <LinearLayout
+                android:id="@+id/timberOptionsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButton81"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="checkBoxOnClicked"
+                    android:text="Wet rot" />
+
+                <RadioButton
+                    android:id="@+id/radioButton92"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Termite attack" />
+
+                <RadioButton
+                    android:id="@+id/radioButton103"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Splits" />
+
+                <RadioButton
+                    android:id="@+id/radioButton114"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cracks" />
+
+                <RadioButton
+                    android:id="@+id/radioButton125"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deformation" />
+
+                <RadioButton
+                    android:id="@+id/radioButton136"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UV degradation" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="masonaryButtonOnClicked"
+                android:text="Masonary" />
+
+            <LinearLayout
+                android:id="@+id/masonaryOptionsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButton77"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Debonding of plaster and render" />
+
+                <RadioButton
+                    android:id="@+id/radioButton98"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rising damp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton109"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Salt attack" />
+
+                <RadioButton
+                    android:id="@+id/radioButton111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cracks" />
+
+                <RadioButton
+                    android:id="@+id/radioButton122"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Paint failure" />
+
+                <RadioButton
+                    android:id="@+id/radioButton13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deformation" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="concreteButtonOnClicked"
+                android:text="Concrete" />
+
+            <LinearLayout
+                android:id="@+id/concreteOptionsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButton83"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Corrosion" />
+
+                <RadioButton
+                    android:id="@+id/radioButton94"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Spalling of conrete" />
+
+                <RadioButton
+                    android:id="@+id/radioButton105"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Crack" />
+
+                <RadioButton
+                    android:id="@+id/radioButton116"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Salt attack" />
+
+                <RadioButton
+                    android:id="@+id/radioButton127"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Debonding of plaster and render" />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="metalworksButtonOnClicked"
+                android:text="Metalworks" />
+
+            <LinearLayout
+                android:id="@+id/metalworksOptionsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButton88"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Corrosion" />
+
+                <RadioButton
+                    android:id="@+id/radioButton99"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deformation" />
+
+                <RadioButton
+                    android:id="@+id/radioButton1091"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Paint failure" />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="generalButtonOnClicked"
+                android:text="General" />
+
+            <LinearLayout
+                android:id="@+id/generalOptionsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButton811"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cracking" />
+
+                <RadioButton
+                    android:id="@+id/radioButton9123"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Abrasion wear/erosion" />
+
+                <RadioButton
+                    android:id="@+id/radioButton10123123"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Debonding" />
+
+                <RadioButton
+                    android:id="@+id/radioButton8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Water seepage" />
+
+                <RadioButton
+                    android:id="@+id/radioButton9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Biological growth" />
+
+                <RadioButton
+                    android:id="@+id/radioButton10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Water chokage" />
+
+                <RadioButton
+                    android:id="@+id/radioButton11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ground settlement" />
+
+                <RadioButton
+                    android:id="@+id/radioButton12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Inappropriate intervention" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Condition Class"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/conditionClass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/radioButton23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CC 0    No symptoms" />
+
+                <RadioButton
+                    android:id="@+id/radioButton22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CC 1    Minor symptoms" />
+
+                <RadioButton
+                    android:id="@+id/radioButton21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CC 2    Moderately strong symptoms" />
+
+                <RadioButton
+                    android:id="@+id/radioButton20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CC 3    Major symptoms" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Picture"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/picturesLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/takePictureButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="takePictureOnClicked"
+                    android:text="Take picture" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Choose picture" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

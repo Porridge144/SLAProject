@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name_label">SLA Project</string>
+    <string-array name="structuralElementsArray">
+        <item>Foundations</item>
+        <item>Walls</item>
+        <item>Columns</item>
+        <item>Beams</item>
+        <item>Floors/Slabs</item>
+        <item>Stairs</item>
+        <item>Roofs</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="architecturalElementsArray">
+        <item>Windows</item>
+        <item>Doors</item>
+        <item>Balconies</item>
+        <item>Wall Finishes</item>
+        <item>Floor Finishes</item>
+        <item>Painting</item>
+        <item>Plasters</item>
+        <item>Renders</item>
+        <item>Others</item>
+    </string-array>
 </resources>
