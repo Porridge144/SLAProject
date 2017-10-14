@@ -5,7 +5,7 @@
     android:id="@+id/floorplanRLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gszzz.slaproject.UnitPlan">
+    tools:context="com.example.gszzz.slaproject.LevelPlan">
 
     <ImageView
         android:id="@+id/imageView"
