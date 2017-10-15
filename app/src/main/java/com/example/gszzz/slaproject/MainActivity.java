@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.gszzz.slaproject.server_interaction.LoginForm;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nextStepOnclick(View view) {
-        Intent i = new Intent(this, BuildingSelectionForm.class);
+        Intent i = new Intent(this, LoginForm.class);
         startActivity(i);
     }
 }

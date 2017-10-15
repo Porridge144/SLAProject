@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gszzz.slaproject.server_interaction.RegistrationForm">
+
+    <EditText
+        android:id="@+id/usernameEditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/passwordEditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/passwordEditText2"
+        android:layout_below="@+id/passwordEditText2"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Password(Confirm)"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/passwordEditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_below="@+id/usernameEditText2"
+        android:layout_alignStart="@+id/usernameEditText2" />
+
+    <Button
+        android:id="@+id/registerButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/passwordEditText3"
+        android:layout_alignStart="@+id/passwordEditText3"
+        android:layout_below="@+id/passwordEditText3"
+        android:layout_marginTop="26dp"
+        android:onClick="registerButtonOnClicked"
+        android:text="Register" />
+</RelativeLayout>
