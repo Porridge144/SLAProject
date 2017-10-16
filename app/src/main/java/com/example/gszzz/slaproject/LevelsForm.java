@@ -48,4 +48,25 @@ public class LevelsForm extends AppCompatActivity {
 
     public void facadeOnClicked(View view) {
     }
+
+    public void northElevationOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+        startActivity(intent);
+    }
+
+    public void westElevationOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+        startActivity(intent);
+    }
+
+    public void southElevationOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+        startActivity(intent);
+    }
+
+    public void eastElevationOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+        startActivity(intent);
+    }
+
 }

@@ -53,42 +53,42 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <RadioButton
-                    android:id="@+id/radioButton81"
+                <CheckBox
+                    android:id="@+id/checkBox2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="checkBoxOnClicked"
                     android:text="Wet rot" />
 
-                <RadioButton
-                    android:id="@+id/radioButton92"
+                <CheckBox
+                    android:id="@+id/checkBox6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Termite attack" />
 
-                <RadioButton
-                    android:id="@+id/radioButton103"
+                <CheckBox
+                    android:id="@+id/checkBox8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Splits" />
 
-                <RadioButton
-                    android:id="@+id/radioButton114"
+                <CheckBox
+                    android:id="@+id/checkBox9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cracks" />
 
-                <RadioButton
-                    android:id="@+id/radioButton125"
+                <CheckBox
+                    android:id="@+id/checkBox10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deformation" />
 
-                <RadioButton
-                    android:id="@+id/radioButton136"
+                <CheckBox
+                    android:id="@+id/checkBox11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="UV degradation" />
+
             </LinearLayout>
 
             <CheckBox
@@ -106,41 +106,42 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <RadioButton
-                    android:id="@+id/radioButton77"
+                <CheckBox
+                    android:id="@+id/checkBox12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Debonding of plaster and render" />
 
-                <RadioButton
-                    android:id="@+id/radioButton98"
+                <CheckBox
+                    android:id="@+id/checkBox13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rising damp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton109"
+                <CheckBox
+                    android:id="@+id/checkBox14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salt attack" />
 
-                <RadioButton
-                    android:id="@+id/radioButton111"
+                <CheckBox
+                    android:id="@+id/checkBox15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cracks" />
 
-                <RadioButton
-                    android:id="@+id/radioButton122"
+                <CheckBox
+                    android:id="@+id/checkBox16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Paint failure" />
 
-                <RadioButton
-                    android:id="@+id/radioButton13"
+                <CheckBox
+                    android:id="@+id/checkBox17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deformation" />
+
             </LinearLayout>
 
             <CheckBox
@@ -158,32 +159,32 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <RadioButton
-                    android:id="@+id/radioButton83"
+                <CheckBox
+                    android:id="@+id/checkBox18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Corrosion" />
 
-                <RadioButton
-                    android:id="@+id/radioButton94"
+                <CheckBox
+                    android:id="@+id/checkBox19"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Spalling of conrete" />
 
-                <RadioButton
-                    android:id="@+id/radioButton105"
+                <CheckBox
+                    android:id="@+id/checkBox20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Crack" />
 
-                <RadioButton
-                    android:id="@+id/radioButton116"
+                <CheckBox
+                    android:id="@+id/checkBox21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salt attack" />
 
-                <RadioButton
-                    android:id="@+id/radioButton127"
+                <CheckBox
+                    android:id="@+id/checkBox22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Debonding of plaster and render" />
@@ -205,20 +206,20 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <RadioButton
-                    android:id="@+id/radioButton88"
+                <CheckBox
+                    android:id="@+id/checkBox23"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Corrosion" />
 
-                <RadioButton
-                    android:id="@+id/radioButton99"
+                <CheckBox
+                    android:id="@+id/checkBox24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deformation" />
 
-                <RadioButton
-                    android:id="@+id/radioButton1091"
+                <CheckBox
+                    android:id="@+id/checkBox25"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Paint failure" />
@@ -240,50 +241,50 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <RadioButton
-                    android:id="@+id/radioButton811"
+                <CheckBox
+                    android:id="@+id/checkBox26"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cracking" />
 
-                <RadioButton
-                    android:id="@+id/radioButton9123"
+                <CheckBox
+                    android:id="@+id/checkBox27"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Abrasion wear/erosion" />
 
-                <RadioButton
-                    android:id="@+id/radioButton10123123"
+                <CheckBox
+                    android:id="@+id/checkBox28"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Debonding" />
 
-                <RadioButton
-                    android:id="@+id/radioButton8"
+                <CheckBox
+                    android:id="@+id/checkBox29"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Water seepage" />
 
-                <RadioButton
-                    android:id="@+id/radioButton9"
+                <CheckBox
+                    android:id="@+id/checkBox30"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Biological growth" />
 
-                <RadioButton
-                    android:id="@+id/radioButton10"
+                <CheckBox
+                    android:id="@+id/checkBox31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Water chokage" />
 
-                <RadioButton
-                    android:id="@+id/radioButton11"
+                <CheckBox
+                    android:id="@+id/checkBox32"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ground settlement" />
 
-                <RadioButton
-                    android:id="@+id/radioButton12"
+                <CheckBox
+                    android:id="@+id/checkBox33"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Inappropriate intervention" />

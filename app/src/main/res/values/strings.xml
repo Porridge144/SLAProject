@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name_label">SLA Project</string>
+    <string name="app_name_label">Easy Survey</string>
     <string-array name="structuralElementsArray">
         <item>Foundations</item>
         <item>Walls</item>
