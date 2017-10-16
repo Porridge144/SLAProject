@@ -13,6 +13,7 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 
 public class BasicInfoForm extends AppCompatActivity {
 
+    String surveyName;
     private MapView mapView;
     EditText type_othersEditText, vacancy_othersEditText;
     //Test
@@ -20,6 +21,8 @@ public class BasicInfoForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_info_form);
+
+        surveyName = getIntent().getStringExtra("surveyName");
 
         mapView = (MapView) findViewById(R.id.mapView);
         ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 1.2915439, 103.76965, 16);
@@ -43,7 +46,7 @@ public class BasicInfoForm extends AppCompatActivity {
 
     public void nextStepOnClicked(View view) {
         Intent intent = new Intent(this, LevelsForm.class);
-        //Put extras...
+        intent.putExtra("surveyName", surveyName);
         startActivity(intent);
     }
 

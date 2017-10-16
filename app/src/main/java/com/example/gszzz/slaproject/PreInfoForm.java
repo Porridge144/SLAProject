@@ -7,10 +7,14 @@ import android.view.View;
 
 public class PreInfoForm extends AppCompatActivity {
 
+    String surveyName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_info_form);
+
+        surveyName = getIntent().getStringExtra("surveyName");
     }
 
     public void prevStepOnClicked(View view) {
@@ -18,7 +22,7 @@ public class PreInfoForm extends AppCompatActivity {
 
     public void nextStepOnClicked(View view) {
         Intent intent = new Intent(this, BasicInfoForm.class);
-        intent.putExtra("", "a");
+        intent.putExtra("surveyName", surveyName);
         startActivity(intent);
     }
 }

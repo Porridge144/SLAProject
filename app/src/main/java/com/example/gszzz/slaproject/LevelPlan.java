@@ -18,6 +18,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gszzz.slaproject.server_interaction.ImageDownloadAsyncTask;
+import com.example.gszzz.slaproject.server_interaction.ServerQueryAsyncTask;
+
 import java.util.ArrayList;
 
 public class LevelPlan extends AppCompatActivity{
@@ -28,6 +31,10 @@ public class LevelPlan extends AppCompatActivity{
     private AlertDialog dialog;
     private int x, y;
     private RelativeLayout relativeLayout;
+    private String surveyName;
+    private String levelName;
+    private String floorPlanName;
+
 
     private static int roomCount = 1, kitchenCount = 1, toiletCount = 1, othersCount = 1;
     private ArrayList<View> viewArrayList = new ArrayList<>();
@@ -49,13 +56,18 @@ public class LevelPlan extends AppCompatActivity{
         setContentView(R.layout.activity_level_plan);
 
         //Which item got clicked
-        Intent i = getIntent();
-        position = i.getIntExtra("itemPosition", 0);
+        floorPlanName = getIntent().getStringExtra("floorPlanName");
+        levelName = getIntent().getStringExtra("levelName");
+        surveyName = getIntent().getStringExtra("surveyName");
+        TextView levelNameTextView = (TextView) findViewById(R.id.levelNameTextView);
+        levelNameTextView.setText(levelName);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.floorPlanImageView);
         relativeLayout = (RelativeLayout) findViewById(R.id.floorplanRLayout);
 
-        //Google Map
+        ImageDownloadAsyncTask imageDownloadAsyncTask = new ImageDownloadAsyncTask(this, imageView);
+        imageDownloadAsyncTask.execute(surveyName, floorPlanName);
+
 
     }
 

@@ -40,13 +40,10 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/levelsContainerLinearLayout"
+            <ListView
+                android:id="@+id/levelListListView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            </LinearLayout>
+                android:layout_height="200dp" />
 
             <TextView
                 android:id="@+id/textView5"

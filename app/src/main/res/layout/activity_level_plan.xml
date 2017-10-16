@@ -7,14 +7,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.gszzz.slaproject.LevelPlan">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/levelNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/floorPlanImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/levelNameTextView"
+        android:layout_marginTop="30dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/room_plan_example" />
+        android:scaleType="fitXY" />
 
 </RelativeLayout>

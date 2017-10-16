@@ -30,8 +30,8 @@ public class RegistrationForm extends AppCompatActivity {
 
         if (password.equals(password1)) {
             String method = "register";
-            BackgroundTask backgroundTask = new BackgroundTask(this);
-            backgroundTask.execute(method, username, password);
+            ServerQueryAsyncTask serverQueryAsyncTask = new ServerQueryAsyncTask(this);
+            serverQueryAsyncTask.execute(method, username, password);
         } else {
             Toast.makeText(getApplicationContext(), "Password and Password Confirm do not match...", Toast.LENGTH_SHORT).show();
             usernameEditText2.setText("");

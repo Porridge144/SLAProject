@@ -26,12 +26,14 @@ public class LoginForm extends AppCompatActivity {
         String username = usernameText.getText().toString();
         String password = passwordText.getText().toString();
         String method = "login";
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        backgroundTask.execute(method, username, password);
+        ServerQueryAsyncTask serverQueryAsyncTask = new ServerQueryAsyncTask(this);
+        serverQueryAsyncTask.execute(method, username, password);
     }
 
     public void registerButtonOnClicked(View view) {
         Intent intent = new Intent(this, RegistrationForm.class);
+        String username = usernameText.getText().toString();
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 }

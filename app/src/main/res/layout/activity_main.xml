@@ -9,20 +9,40 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="202dp"
-        android:onClick="nextStepOnclick"
-        android:text="Continue Current Survey" />
+        android:onClick="newSurveyButtonOnclick"
+        android:text="Continue Current Survey"
+        android:layout_marginTop="13dp"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
+        android:onClick="newSurveyButtonOnclick"
+        android:layout_alignTop="@+id/button"
+        android:text="Start a new survey"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="73dp"
-        android:onClick="nextStepOnclick"
-        android:text="Start a new survey" />
+        android:layout_marginTop="14dp"
+        android:onClick="refreshListButtonOnClicked"
+        android:text="Refresh List" />
+
+    <ListView
+        android:id="@+id/surveyListListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/button9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="72dp" />
 
 </RelativeLayout>
