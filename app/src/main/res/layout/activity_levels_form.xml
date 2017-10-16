@@ -67,7 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="northElevationOnClick"
-                    android:text="North Elevation" />
+                    android:text="North Elevation"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/westElevationTextView"
@@ -75,7 +76,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="westElevationOnClick"
-                    android:text="West Elevation" />
+                    android:text="West Elevation"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/southElevationTextView"
@@ -83,7 +85,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="southElevationOnClick"
-                    android:text="South Elevation" />
+                    android:text="South Elevation"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/eastElevationTextView"
@@ -91,7 +94,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="eastElevationOnClick"
-                    android:text="East Elevation" />
+                    android:text="East Elevation"
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </LinearLayout>
