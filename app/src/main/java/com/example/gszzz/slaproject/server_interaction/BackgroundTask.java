@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.gszzz.slaproject.BuildingSelectionForm;
+import com.example.gszzz.slaproject.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -134,12 +135,20 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             ctx.startActivity(i);
         }else {
-            if (result.equals("Username already existed. Registration failed...")){
-
-            } else if (!result.equals("Login Failed...Try Again")){
-                Intent i = new Intent(ctx, BuildingSelectionForm.class);
+            if (result.contains("Login Success...Welcome")){
+                Intent i = new Intent(ctx, MainActivity.class);
                 ctx.startActivity(i);
+            } else if (result.equals("Username already existed. Registration failed...") || result.equals("Login Failed...Try Again")) {
+                //Do nothing
+            } else {
+                //When receive response from user data query...
+
             }
+//            else if (!result.equals("Login Failed...Try Again")){
+//                Intent i = new Intent(ctx, BuildingSelectionForm.class);
+//                ctx.startActivity(i);
+//            }
+
             Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
         }
     }

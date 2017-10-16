@@ -21,11 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".BuildingSelectionForm" />
         <activity android:name=".LevelPlan" />
@@ -39,7 +35,13 @@
         <activity android:name=".PreInfoForm" />
         <activity android:name=".LevelsForm" />
         <activity android:name=".BuildingDetailForm2" />
-        <activity android:name=".server_interaction.LoginForm" />
+        <activity android:name=".server_interaction.LoginForm">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".server_interaction.RegistrationForm"></activity>
     </application>
 

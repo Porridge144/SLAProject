@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nextStepOnclick(View view) {
-        Intent i = new Intent(this, LoginForm.class);
+        Intent i = new Intent(this, BuildingSelectionForm.class);
         startActivity(i);
     }
 }
