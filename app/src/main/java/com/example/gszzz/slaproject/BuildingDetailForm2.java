@@ -114,4 +114,9 @@ public class BuildingDetailForm2 extends AppCompatActivity {
         }
 
     }
+
+    public void finishButtonOnClick(View view) {
+        Intent intent = new Intent(this, BuildingDetailForm.class);
+        startActivity(intent);
+    }
 }
