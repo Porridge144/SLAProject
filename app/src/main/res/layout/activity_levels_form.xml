@@ -36,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Levels"
-                    android:textSize="20sp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp" />
 
             </LinearLayout>
 
@@ -52,9 +53,11 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="Facade"
-                android:textSize="20sp" />
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,37 +68,49 @@
                     android:id="@+id/northElevationTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:onClick="northElevationOnClick"
                     android:text="North Elevation"
-                    android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/westElevationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:onClick="westElevationOnClick"
                     android:text="West Elevation"
-                    android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/southElevationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:onClick="southElevationOnClick"
                     android:text="South Elevation"
-                    android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/eastElevationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:onClick="eastElevationOnClick"
                     android:text="East Elevation"
-                    android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
