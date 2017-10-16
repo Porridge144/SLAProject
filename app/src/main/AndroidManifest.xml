@@ -38,7 +38,9 @@
         <activity android:name=".BasicInfoForm" />
         <activity android:name=".PreInfoForm" />
         <activity android:name=".LevelsForm" />
-        <activity android:name=".BuildingDetailForm2"></activity>
+        <activity android:name=".BuildingDetailForm2" />
+        <activity android:name=".server_interaction.LoginForm" />
+        <activity android:name=".server_interaction.RegistrationForm"></activity>
     </application>
 
 </manifest>
