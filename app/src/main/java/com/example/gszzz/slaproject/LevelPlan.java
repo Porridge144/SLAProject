@@ -1,7 +1,9 @@
 package com.example.gszzz.slaproject;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
@@ -127,34 +129,6 @@ public class LevelPlan extends AppCompatActivity{
         dialog.show();
     }
 
-/*    private void showInputBox() {
-        final EditText editText = new EditText(this);
-        editText.setInputType(InputType.TYPE_CLASS_TEXT);
-        AlertDialog.Builder builder = new AlertDialog.Builder(LevelPlan.this);
-        builder.setTitle("Enter label");
-        builder.setCancelable(true);
-        builder.setView(editText);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (!editText.getText().toString().equals("")) {
-                    renderLabel(editText.getText().toString());
-                    dialogInterface.cancel();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Name cannot be empty!", Toast.LENGTH_SHORT).show();
-                    dialogInterface.cancel();
-                }
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
-        builder.create().show();
-
-    }*/
 
     private void renderLabel(String label) {
 
@@ -188,8 +162,22 @@ public class LevelPlan extends AppCompatActivity{
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Save room label in the shared preference file
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("roomLabelString", textView.getText().toString());
+
+                //Save room label into the room list of this specific level
+                String roomListAsLevelStringName = levelName + "RoomList";
+                String tmp = sharedPreferences.getString(roomListAsLevelStringName, "");
+                tmp += (textView.getText().toString() + ":");
+                editor.putString(roomListAsLevelStringName, tmp);
+
+                editor.apply();
+
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
-                intent.putExtra("labelString", textView.getText().toString());
+                intent.putExtra("roomLabelString", textView.getText().toString());
                 startActivity(intent);
             }
         });
@@ -204,5 +192,11 @@ public class LevelPlan extends AppCompatActivity{
 
         relativeLayout.addView(textView, layoutParams);
 
+    }
+
+    public void finishButtonOnClicked(View view) {
+//        Intent intent = new Intent(this, LevelsForm.class);
+//        startActivity(intent);
+        finish();
     }
 }

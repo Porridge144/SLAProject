@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name_label">Easy Survey</string>
     <string name="ip_address">http://121.7.122.74:8081</string>
+    <string name="preference_filename">com.example.gszzz.slaproject.STORAGE_FILE</string>
     <string-array name="structuralElementsArray">
         <item>Foundations</item>
         <item>Walls</item>
@@ -20,6 +21,6 @@
         <item>Painting</item>
         <item>Plasters</item>
         <item>Renders</item>
-        <item>Others</item>
+        <item>Other</item>
     </string-array>
 </resources>

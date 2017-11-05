@@ -39,7 +39,7 @@
                 android:textSize="20sp" />
 
             <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/timberCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="timberButtonOnClicked"
@@ -54,37 +54,37 @@
                 android:visibility="gone">
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/timberCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Wet rot" />
 
                 <CheckBox
-                    android:id="@+id/checkBox6"
+                    android:id="@+id/timberCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Termite attack" />
 
                 <CheckBox
-                    android:id="@+id/checkBox8"
+                    android:id="@+id/timberCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Splits" />
 
                 <CheckBox
-                    android:id="@+id/checkBox9"
+                    android:id="@+id/timberCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cracks" />
 
                 <CheckBox
-                    android:id="@+id/checkBox10"
+                    android:id="@+id/timberCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deformation" />
 
                 <CheckBox
-                    android:id="@+id/checkBox11"
+                    android:id="@+id/timberCb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="UV degradation" />
@@ -92,11 +92,11 @@
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/masonaryCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="masonaryButtonOnClicked"
-                android:text="Masonary" />
+                android:text="Masonry" />
 
             <LinearLayout
                 android:id="@+id/masonaryOptionsLinearLayout"
@@ -107,37 +107,37 @@
                 android:visibility="gone">
 
                 <CheckBox
-                    android:id="@+id/checkBox12"
+                    android:id="@+id/masonaryCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Debonding of plaster and render" />
 
                 <CheckBox
-                    android:id="@+id/checkBox13"
+                    android:id="@+id/masonaryCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rising damp" />
 
                 <CheckBox
-                    android:id="@+id/checkBox14"
+                    android:id="@+id/masonaryCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salt attack" />
 
                 <CheckBox
-                    android:id="@+id/checkBox15"
+                    android:id="@+id/masonaryCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cracks" />
 
                 <CheckBox
-                    android:id="@+id/checkBox16"
+                    android:id="@+id/masonaryCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Paint failure" />
 
                 <CheckBox
-                    android:id="@+id/checkBox17"
+                    android:id="@+id/masonaryCb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deformation" />
@@ -145,7 +145,7 @@
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/concreteCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="concreteButtonOnClicked"
@@ -160,31 +160,31 @@
                 android:visibility="gone">
 
                 <CheckBox
-                    android:id="@+id/checkBox18"
+                    android:id="@+id/concreteCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Corrosion" />
 
                 <CheckBox
-                    android:id="@+id/checkBox19"
+                    android:id="@+id/concreteCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Spalling of conrete" />
 
                 <CheckBox
-                    android:id="@+id/checkBox20"
+                    android:id="@+id/concreteCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Crack" />
 
                 <CheckBox
-                    android:id="@+id/checkBox21"
+                    android:id="@+id/concreteCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salt attack" />
 
                 <CheckBox
-                    android:id="@+id/checkBox22"
+                    android:id="@+id/concreteCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Debonding of plaster and render" />
@@ -192,7 +192,7 @@
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/metalworksCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="metalworksButtonOnClicked"
@@ -207,19 +207,19 @@
                 android:visibility="gone">
 
                 <CheckBox
-                    android:id="@+id/checkBox23"
+                    android:id="@+id/metalworksCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Corrosion" />
 
                 <CheckBox
-                    android:id="@+id/checkBox24"
+                    android:id="@+id/metalworksCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deformation" />
 
                 <CheckBox
-                    android:id="@+id/checkBox25"
+                    android:id="@+id/metalworksCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Paint failure" />
@@ -227,7 +227,7 @@
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/checkBox7"
+                android:id="@+id/generalCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="generalButtonOnClicked"
@@ -242,49 +242,49 @@
                 android:visibility="gone">
 
                 <CheckBox
-                    android:id="@+id/checkBox26"
+                    android:id="@+id/generalCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cracking" />
 
                 <CheckBox
-                    android:id="@+id/checkBox27"
+                    android:id="@+id/generalCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Abrasion wear/erosion" />
 
                 <CheckBox
-                    android:id="@+id/checkBox28"
+                    android:id="@+id/generalCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Debonding" />
 
                 <CheckBox
-                    android:id="@+id/checkBox29"
+                    android:id="@+id/generalCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Water seepage" />
 
                 <CheckBox
-                    android:id="@+id/checkBox30"
+                    android:id="@+id/generalCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Biological growth" />
 
                 <CheckBox
-                    android:id="@+id/checkBox31"
+                    android:id="@+id/generalCb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Water chokage" />
 
                 <CheckBox
-                    android:id="@+id/checkBox32"
+                    android:id="@+id/generalCb7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ground settlement" />
 
                 <CheckBox
-                    android:id="@+id/checkBox33"
+                    android:id="@+id/generalCb8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Inappropriate intervention" />
@@ -299,9 +299,9 @@
                 android:textSize="20sp" />
 
             <RadioGroup
-                android:id="@+id/conditionClass"
+                android:id="@+id/conditionClassRadioGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <RadioButton
                     android:id="@+id/radioButton23"
@@ -363,6 +363,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="selectPictureOnClicked"
                     android:text="Choose picture" />
 
             </LinearLayout>

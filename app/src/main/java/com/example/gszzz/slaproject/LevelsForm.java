@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.gszzz.slaproject.server_interaction.LoginForm;
 import com.example.gszzz.slaproject.server_interaction.ServerQueryAsyncTask;
+import com.example.gszzz.slaproject.storage_handler.OutputGenerator;
 
 public class LevelsForm extends AppCompatActivity {
 
@@ -50,6 +54,23 @@ public class LevelsForm extends AppCompatActivity {
                     levelListRefinedNoExtension[i] = tmp;
                 }
 
+                //Save level names
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                StringBuilder builder = new StringBuilder("");
+                for (String levelName : levelListRefinedNoExtension) {
+                    String tmp = levelName + ":";
+                    builder.append(tmp);
+                }
+                editor.putString("levelNames", builder.toString());
+                editor.apply();
+
+                //==============================================For Testing============================================
+//                Toast.makeText(getApplicationContext(),
+//                        sharedPreferences.getString("levelNames", ""),
+//                        Toast.LENGTH_SHORT).show();
+                //=====================================================================================================
+
                 ListAdapter listAdapter = new ArrayAdapter<>(LevelsForm.this, android.R.layout.simple_list_item_1, levelListRefinedNoExtension);
                 levelListListView.setAdapter(listAdapter);
 
@@ -58,6 +79,13 @@ public class LevelsForm extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent intent = new Intent(getApplicationContext(), LevelPlan.class);
                         intent.putExtra("levelName", levelListRefinedNoExtension[i]);
+
+                        //Save current level name for other activities' use
+                        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("currentLevelName", levelListRefinedNoExtension[i]);
+                        editor.apply();
+
                         intent.putExtra("floorPlanName", levelListRefined[i]);
                         intent.putExtra("surveyName", surveyName);
                         startActivity(intent);
@@ -74,56 +102,68 @@ public class LevelsForm extends AppCompatActivity {
         ServerQueryAsyncTask serverQueryAsyncTask = new ServerQueryAsyncTask(this);
         serverQueryAsyncTask.execute(method, surveyName);
 
-
-//
-//        levelCount = 0;
-//        addLevelOnClicked(new TextView(this));
     }
-
-/*    public void addLevelOnClicked(View view) {
-        levelCount += 1;
-        final TextView textView = new TextView(this);
-        String tmp = "Level " + levelCount;
-        textView.setText(tmp);
-        textView.setTextColor(Color.BLACK);
-        textView.setTextSize(23);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LevelPlan.class);
-                intent.putExtra("levelName", textView.getText().toString());
-                startActivity(intent);
-            }
-        });
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
-        layoutParams.setMargins(15, 10, 10, 10);
-        levelsContainerLinearLayout.addView(textView, layoutParams);
-    }*/
 
     public void facadeOnClicked(View view) {
     }
 
     public void northElevationOnClick(View view) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentLevelName", "NorthElevation");
+        editor.putString("roomLabelString", "NorthElevation");
+        editor.apply();
+
         Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
         startActivity(intent);
     }
 
     public void westElevationOnClick(View view) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentLevelName", "WestElevation");
+        editor.putString("roomLabelString", "WestElevation");
+        editor.apply();
+
         Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
         startActivity(intent);
     }
 
     public void southElevationOnClick(View view) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentLevelName", "SouthElevation");
+        editor.putString("roomLabelString", "SouthElevation");
+        editor.apply();
+
         Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
         startActivity(intent);
     }
 
     public void eastElevationOnClick(View view) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentLevelName", "EastElevation");
+        editor.putString("roomLabelString", "EastElevation");
+
+
+
+        editor.apply();
+
         Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
         startActivity(intent);
     }
 
+    public void submitButtonOnClicked(View view) {
+
+        new OutputGenerator(surveyName).generateCSV(getApplicationContext());
+        Intent intent = new Intent(this, LoginForm.class);
+        startActivity(intent);
+        finish();
+
+    }
 }

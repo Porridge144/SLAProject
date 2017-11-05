@@ -33,6 +33,7 @@
 
         <activity android:name=".BasicInfoForm" />
         <activity android:name=".PreInfoForm" />
+
         <activity android:name=".LevelsForm" />
         <activity android:name=".BuildingDetailForm2" />
         <activity android:name=".server_interaction.LoginForm">

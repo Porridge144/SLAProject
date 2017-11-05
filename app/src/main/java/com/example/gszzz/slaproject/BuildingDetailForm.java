@@ -1,6 +1,8 @@
 package com.example.gszzz.slaproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
@@ -62,6 +64,22 @@ public class BuildingDetailForm extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void backButtonOnCLicked(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        String currentLevelName = sharedPreferences.getString("currentLevelName", "");
+        if (!currentLevelName.equals("EastElevation") && !currentLevelName.equals("WestElevation")
+                && !currentLevelName.equals("NorthElevation") && !currentLevelName.equals("SouthElevation")) {
+//            Intent intent = new Intent(this, LevelPlan.class);
+//            startActivity(intent);
+            finish();
+        } else {
+//            Intent intent = new Intent(this, LevelsForm.class);
+//            startActivity(intent);
+            finish();
+        }
 
     }
 }

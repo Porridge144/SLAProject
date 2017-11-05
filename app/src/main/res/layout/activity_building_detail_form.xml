@@ -6,57 +6,74 @@
     tools:context="com.example.gszzz.slaproject.BuildingDetailForm">
 
 
-    <TabHost
-        android:id="@+id/tabHost"
-        android:layout_width="200dip"
-        android:layout_height="300dip"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TabHost
+            android:id="@+id/tabHost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></TabWidget>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/Tab1"
+                <TabWidget
+                    android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"></TabWidget>
 
-                    <ListView
-                        android:id="@+id/structuralListView"
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/Tab1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:entries="@array/structuralElementsArray" />
-                </LinearLayout>
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/Tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                        <ListView
+                            android:id="@+id/structuralListView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/structuralElementsArray" />
+                    </LinearLayout>
 
-                    <ListView
-                        android:id="@+id/architecturalListView"
+                    <LinearLayout
+                        android:id="@+id/Tab2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:entries="@array/architecturalElementsArray" />
-                </LinearLayout>
+                        android:orientation="vertical">
 
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+                        <ListView
+                            android:id="@+id/architecturalListView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/architecturalElementsArray" />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </TabHost>
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="backButtonOnCLicked"
+            android:text="Back" />
+
+    </LinearLayout>
+
 </RelativeLayout>

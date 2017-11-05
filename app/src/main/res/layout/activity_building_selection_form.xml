@@ -39,9 +39,9 @@
             app:srcCompat="@drawable/singapore_map" />
 
         <Spinner
-            android:id="@+id/spinner6"
+            android:id="@+id/clusterSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/textView10"
@@ -51,9 +51,9 @@
             android:textSize="15sp" />
 
         <Spinner
-            android:id="@+id/spinner5"
+            android:id="@+id/buildingNameSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="50dp" />
 
         <Button
             android:id="@+id/button3"

@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 surveyListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        //TODO: Load Saved SharedPreference file
+
+
                         Intent intent = new Intent(getApplicationContext(), BuildingSelectionForm.class);
                         intent.putExtra("surveyName", String.valueOf(adapterView.getItemAtPosition(i)));
                         startActivity(intent);
