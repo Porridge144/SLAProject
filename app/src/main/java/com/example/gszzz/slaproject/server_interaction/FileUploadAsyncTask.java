@@ -3,6 +3,7 @@ package com.example.gszzz.slaproject.server_interaction;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.example.gszzz.slaproject.R;
 
@@ -15,6 +16,8 @@ import java.net.URL;
 public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
 
     private Context context;
+    private String sourceFilePath;
+    private int count = 0;
 
     public FileUploadAsyncTask(Context context) {this.context = context;}
 
@@ -22,8 +25,15 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
+        //See if it is image. If is,
+//        boolean isImageFile = false;
+//        if (params[0].contains(".png")) isImageFile = true;
+
+//        Toast.makeText(context, "INSIDE...", Toast.LENGTH_SHORT).show();
+
         try {
             String sourceFileUri = params[0];
+            sourceFilePath = sourceFileUri;
 
             HttpURLConnection conn = null;
             DataOutputStream dos = null;
@@ -36,6 +46,7 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
             File sourceFile = new File(sourceFileUri);
 
             if (sourceFile.isFile()) {
+
 
                 try {
                     String upLoadServerUri = context.getString(R.string.ip_address) + "/SLAProject/LoginForm/upload_csv.php?";
@@ -83,6 +94,7 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
                                 .min(bytesAvailable, maxBufferSize);
                         bytesRead = fileInputStream.read(buffer, 0,
                                 bufferSize);
+                        count += 1;
 
                     }
 
@@ -92,10 +104,13 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
                     dos.writeBytes(twoHyphens + boundary + twoHyphens
                             + lineEnd);
 
+
+
                     // Responses from the server (code and message)
                     int serverResponseCode = conn.getResponseCode();
                     String serverResponseMessage = conn
                             .getResponseMessage();
+
 
                     if (serverResponseCode == 200) {
 
@@ -104,13 +119,16 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
                         //      Toast.LENGTH_SHORT).show();
 
                         // recursiveDelete(mDirectory1);
-
                     }
+
+
 
                     // close the streams //
                     fileInputStream.close();
                     dos.flush();
                     dos.close();
+
+
 
                 } catch (Exception e) {
 
@@ -120,8 +138,7 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
                 }
                 // dialog.dismiss();
 
-            } // End else block
-
+            }
 
         } catch (Exception ex) {
             // dialog.dismiss();
@@ -133,11 +150,19 @@ public class FileUploadAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
+//        File file = new File(sourceFilePath);
+//        if (!file.delete()) {
+//            Toast.makeText(context, "Failed to delete local file...", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(context, "Local file deleted successfully...", Toast.LENGTH_SHORT).show();
+//        }
+//        Toast.makeText(context, "Uploading done..." + "_" + result, Toast.LENGTH_SHORT).show();
+        context = null;
     }
 
     @Override
     protected void onPreExecute() {
+
     }
 
     @Override

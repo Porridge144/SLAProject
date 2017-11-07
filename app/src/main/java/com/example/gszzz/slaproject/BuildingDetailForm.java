@@ -50,7 +50,7 @@ public class BuildingDetailForm extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemName =String.valueOf(parent.getItemAtPosition(position));
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
-                intent.putExtra("itemName", itemName);
+                intent.putExtra("elementName", itemName);
                 startActivity(intent);
             }
         });
@@ -59,7 +59,7 @@ public class BuildingDetailForm extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemName =String.valueOf(parent.getItemAtPosition(position));
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
-                intent.putExtra("itemName", itemName);
+                intent.putExtra("elementName", itemName);
                 startActivity(intent);
             }
         });

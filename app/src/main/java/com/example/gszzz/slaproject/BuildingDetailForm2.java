@@ -1,11 +1,17 @@
 package com.example.gszzz.slaproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,17 +22,33 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gszzz.slaproject.server_interaction.FileUploadAsyncTask;
 import com.example.gszzz.slaproject.storage_handler.StorageHandler;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BuildingDetailForm2 extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private String currentPhotoPath = "";
+    private Uri photoURI;
+    private String imageFileName;
     LinearLayout picturesLinearLayout, timberOptionsLinearLayout, masonaryOptionsLinearLayout, concreteOptionsLinearLayout, metalworksOptionsLinearLayout, generalOptionsLinearLayout;
-    String itemName;
+    String elementName;
     TextView itemNameTextView;
 
     //Check boxes
     CheckBox timberCheckBox, masonaryCheckBox, concreteCheckBox, metalworksCheckBox, generalCheckBox;
     RadioGroup conditionClassRadioGroup;
+
+
+    private static int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,44 +78,208 @@ public class BuildingDetailForm2 extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        itemName = intent.getStringExtra("itemName");
+        elementName = intent.getStringExtra("elementName");
         itemNameTextView = (TextView) findViewById(R.id.elementTextView);
-        itemNameTextView.setText(itemName);
+        itemNameTextView.setText(elementName);
+
     }
     public void takePictureOnClicked(View view) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+        Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+
+        //Save information in shared preference file
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //Get the count to generate name of pics
+        String imageCountVariableName = sharedPreferences.getString("surveyName", "") + "_" +
+                sharedPreferences.getString("currentLevelName", "") + "_" +
+                sharedPreferences.getString("roomLabelString", "") + "_" + elementName + "_" +
+                "imageCount";
+        int count = sharedPreferences.getInt(imageCountVariableName, 0);
+        count += 1;
+        editor.putInt(imageCountVariableName, count);
+
+        //save the file name inside a string set
+        String imageFileName = sharedPreferences.getString("surveyName", "") + "_" +
+                sharedPreferences.getString("currentLevelName", "") + "_" +
+                sharedPreferences.getString("roomLabelString", "") + "_" + elementName + "_" +
+                "cameraImage" + Integer.toString(count) +".jpg";
+        String stringSetName = sharedPreferences.getString("surveyName", "") + "_" +
+                sharedPreferences.getString("currentLevelName", "") + "_" +
+                sharedPreferences.getString("roomLabelString", "") + "_" + elementName + "_" +
+                "imageFileNamesStringSet";
+        Set<String> imageFileNamesStringSet = sharedPreferences.getStringSet(stringSetName, new HashSet<String>());
+        imageFileNamesStringSet.add(imageFileName);
+        editor.putStringSet(stringSetName, imageFileNamesStringSet);
+        editor.apply();
+
+        this.imageFileName = imageFileName;
+
+        File photoFile = null;
+        try {
+            photoFile = createImageFile();
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), "Failed to create image file...", Toast.LENGTH_SHORT).show();
+        }
+
+        if (photoFile != null) {
+//            Uri photoURI = FileProvider.getUriForFile(this,
+//                    "com.example.gszzz.slaproject.android.fileprovider",
+//                    photoFile);
+            photoURI = Uri.fromFile(photoFile);
+            takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+            startActivityForResult(takePhotoIntent, REQUEST_IMAGE_CAPTURE);
+        }
+
+//        if (isExternalStorageWritable()) {
+//            Toast.makeText(getApplicationContext(), "Writable...", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Not Writable...", Toast.LENGTH_SHORT).show();
+//        }
+
+    }
+
+
+    public boolean isExternalStorageWritable(String imageFileName) {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                null,         /* suffix */
+                storageDir      /* directory */
+        );
+//        File image = new File(storageDir, imageFileName);
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+//        Toast.makeText(getApplicationContext(), "Current Path: " + currentPhotoPath, Toast.LENGTH_LONG).show();
+        return image;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            //Get the photo
-            Bundle extras = data.getExtras();
-            Bitmap photo = (Bitmap) extras.get("data");
+
+
+            //Save file to internal storage
+//            String imageFilePath = getFilesDir().toString() + "/" + imageFileName;
+
+//            getContentResolver().notifyChange(photoURI, null);
+//            ContentResolver cr = getContentResolver();
+//            Bitmap bitmap = null;
+//            try {
+//                bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, photoURI);
+//            } catch (Exception e) {
+//                Toast.makeText(getApplicationContext(), "Failed to load...", Toast.LENGTH_SHORT).show();
+//            }
+
+
+
+
+
+//            String imageFilePath = getFilesDir().toString() + "/" + imageFileName;
+//
+//            FileOutputStream out = null;
+//            try {
+//                File outputFile = new File(imageFilePath);
+//                out = new FileOutputStream(outputFile);
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+//            } catch (Exception e) {
+//                Toast.makeText(getApplicationContext(), "Compression or new FileOutputStream Exception", Toast.LENGTH_SHORT).show();
+//            } finally {
+//                try {
+//                    if (out != null) {
+//                        out.close();
+//                    }
+//                } catch (IOException ignored) {
+//
+//                }
+//            }
+
+
+
+/*            if (bitmap != null) {
+                ImageView imageView = new ImageView(this);
+                imageView.setImageBitmap(bitmap);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+                picturesLinearLayout.addView(imageView, layoutParams);
+            }*/
+
+            File oldFile = new File(currentPhotoPath);
+            File newFile = new File(getFilesDir(), imageFileName);
+
+            try {
+                copy(oldFile, newFile);
+                Toast.makeText(getApplicationContext(),String.valueOf(count), Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "IOException..", Toast.LENGTH_LONG).show();
+            }
+
+            new FileUploadAsyncTask(getApplicationContext()).execute(newFile.getAbsolutePath());
+
+
+            // Get the dimensions of the View
+            int targetW = 200;
+            int targetH = 200;
+
+            // Get the dimensions of the bitmap
+            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+            bmOptions.inJustDecodeBounds = true;
+            BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
+            int photoW = bmOptions.outWidth;
+            int photoH = bmOptions.outHeight;
+
+            // Determine how much to scale down the image
+            int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+
+            // Decode the image file into a Bitmap sized to fill the View
+            bmOptions.inJustDecodeBounds = false;
+            bmOptions.inSampleSize = scaleFactor;
+            bmOptions.inPurgeable = true;
+
+            Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
+
             ImageView imageView = new ImageView(this);
-            imageView.setImageBitmap(photo);
+
+            imageView.setImageBitmap(bitmap);
+
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
+            layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
             picturesLinearLayout.addView(imageView, layoutParams);
 
         }
     }
 
-    public void selectPictureOnClicked(View view) {
+    public static void copy(File src, File dst) throws IOException {
+        try (InputStream in = new FileInputStream(src)) {
+            try (OutputStream out = new FileOutputStream(dst)) {
+                // Transfer bytes from in to out
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                    count += 1;
+                }
+            }
+        }
+    }
 
-        //Tmp code for test
-//        StorageHandler storageHandler = new StorageHandler();
-//        String[] resultStrings = storageHandler.execute(getApplicationContext(), StorageHandler.DATA_READ, StorageHandler.PAGE_BUILDING_DETAIL_FORM2, itemName);
-//
-//        StringBuilder tmp = new StringBuilder("");
-//        for (String value : resultStrings) {
-//            String tmp1 = value + "\n";
-//            tmp.append(tmp1);
-//        }
-//        Toast.makeText(getApplicationContext(), tmp, Toast.LENGTH_SHORT).show();
+
+    public void selectPictureOnClicked(View view) {
 
     }
 
@@ -372,7 +558,7 @@ public class BuildingDetailForm2 extends AppCompatActivity {
         String conditionClassButtonString = tmpButton.getText().toString();
 
         StorageHandler storageHandler = new StorageHandler();
-        storageHandler.execute(getApplicationContext(), StorageHandler.DATA_WRITE, StorageHandler.PAGE_BUILDING_DETAIL_FORM2, itemName,
+        storageHandler.execute(getApplicationContext(), StorageHandler.DATA_WRITE, StorageHandler.PAGE_BUILDING_DETAIL_FORM2, elementName,
                 timberCheckBoxIDString, masonaryCheckBoxIDString, concreteCheckBoxIDString, metalworksCheckBoxIDString, generalCheckBoxIDString,
                 timberCheckBoxContentString, masonaryCheckBoxContentString, concreteCheckBoxContentString, metalworksCheckBoxContentString, generalCheckBoxContentString,
                 conditionClassButtonString);

@@ -9,15 +9,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.Basemap;
-import com.esri.arcgisruntime.mapping.view.MapView;
 import com.example.gszzz.slaproject.storage_handler.StorageHandler;
 
 public class BasicInfoForm extends AppCompatActivity {
 
     String surveyName;
-    private MapView mapView;
     EditText type_othersEditText, vacancy_othersEditText;
 
     RadioGroup type_radioGroup, vacancy_radioGroup;
@@ -30,9 +26,6 @@ public class BasicInfoForm extends AppCompatActivity {
 
         surveyName = getIntent().getStringExtra("surveyName");
 
-        mapView = (MapView) findViewById(R.id.mapView);
-        ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 1.2915439, 103.76965, 16);
-        mapView.setMap(map);
 
         type_othersEditText = (EditText) findViewById(R.id.type_otherEditText);
         vacancy_othersEditText = (EditText) findViewById(R.id.vacancy_otherEditText);
@@ -44,13 +37,11 @@ public class BasicInfoForm extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        mapView.pause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        mapView.resume();
         super.onResume();
     }
 

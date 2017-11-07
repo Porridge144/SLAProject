@@ -30,6 +30,10 @@ public class LevelsForm extends AppCompatActivity {
 
         try {
             surveyName = getIntent().getStringExtra("surveyName");
+            SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("surveyName", surveyName);
+            editor.apply();
         } catch (Exception ignored) {
         }
 
@@ -149,7 +153,6 @@ public class LevelsForm extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("currentLevelName", "EastElevation");
         editor.putString("roomLabelString", "EastElevation");
-
 
 
         editor.apply();
