@@ -415,6 +415,11 @@ public class BuildingDetailForm2 extends AppCompatActivity {
                 timberCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
                 timberCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
             }
+            tmpCheckBox = (CheckBox) findViewById(R.id.timberCb7);
+            if (tmpCheckBox.isChecked()) {
+                timberCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
+                timberCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
+            }
 
         } else {
             timberCheckBoxIDString = "NA";
@@ -454,6 +459,11 @@ public class BuildingDetailForm2 extends AppCompatActivity {
                 masonaryCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
                 masonaryCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
             }
+            tmpCheckBox = (CheckBox) findViewById(R.id.masonaryCb7);
+            if (tmpCheckBox.isChecked()) {
+                masonaryCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
+                masonaryCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
+            }
 
         } else {
             masonaryCheckBoxIDString = "NA";
@@ -488,6 +498,11 @@ public class BuildingDetailForm2 extends AppCompatActivity {
                 concreteCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
                 concreteCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
             }
+            tmpCheckBox = (CheckBox) findViewById(R.id.concreteCb6);
+            if (tmpCheckBox.isChecked()) {
+                concreteCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
+                concreteCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
+            }
 
         } else {
             concreteCheckBoxIDString = "NA";
@@ -509,6 +524,11 @@ public class BuildingDetailForm2 extends AppCompatActivity {
                 metalworksCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
             }
             tmpCheckBox = (CheckBox) findViewById(R.id.metalworksCb3);
+            if (tmpCheckBox.isChecked()) {
+                metalworksCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
+                metalworksCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
+            }
+            tmpCheckBox = (CheckBox) findViewById(R.id.metalworksCb4);
             if (tmpCheckBox.isChecked()) {
                 metalworksCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
                 metalworksCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
@@ -563,6 +583,11 @@ public class BuildingDetailForm2 extends AppCompatActivity {
                 generalCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
                 generalCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
             }
+            tmpCheckBox = (CheckBox) findViewById(R.id.generalCb9);
+            if (tmpCheckBox.isChecked()) {
+                generalCheckBoxIDString += Integer.toString(tmpCheckBox.getId()) + ":";
+                generalCheckBoxContentString += tmpCheckBox.getText().toString() + ":";
+            }
 
         } else {
             generalCheckBoxIDString = "NA";
@@ -598,6 +623,18 @@ public class BuildingDetailForm2 extends AppCompatActivity {
             return;
         }
 
+        boolean noMateralSelectedFlag = true;
+        if (timberCheckBox.isChecked()) noMateralSelectedFlag = false;
+        if (masonaryCheckBox.isChecked()) noMateralSelectedFlag = false;
+        if (concreteCheckBox.isChecked()) noMateralSelectedFlag = false;
+        if (metalworksCheckBox.isChecked()) noMateralSelectedFlag = false;
+        if (generalCheckBox.isChecked()) noMateralSelectedFlag = false;
+
+        if (noMateralSelectedFlag){
+            Toast.makeText(getApplicationContext(), "Please select at least one Material", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (conditionClassRadioGroup.getCheckedRadioButtonId() == -1) {
             Toast.makeText(getApplicationContext(), "Please select Condition Class", Toast.LENGTH_SHORT).show();
             return;
@@ -615,5 +652,111 @@ public class BuildingDetailForm2 extends AppCompatActivity {
 
         finish();
 
+    }
+
+    public void generalGCCBonClicked(View view) {
+        if (((CheckBox) view).isChecked()) {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.generalCb1);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb2);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb3);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb4);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb5);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb6);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb7);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.generalCb8);
+            checkBox.setChecked(false);
+        }
+    }
+    public void generalOtherCBOnClicked(View view) {
+        if (((CheckBox) view).isChecked()) {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.generalCb9);
+            checkBox.setChecked(false);
+        }
+    }
+
+    public void metalworksGCCBonClicked(View view) {
+        if (((CheckBox) view).isChecked()) {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.metalworksCb1);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.metalworksCb2);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.metalworksCb3);
+            checkBox.setChecked(false);
+        }
+    }
+    public void metalworksOtherCBOnClicked(View view) {
+        CheckBox checkBox = (CheckBox) findViewById(R.id.metalworksCb4);
+        checkBox.setChecked(false);
+    }
+
+    public void concreteGCCBonClicked(View view) {
+        if (((CheckBox) view).isChecked()) {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.concreteCb1);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.concreteCb2);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.concreteCb3);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.concreteCb4);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.concreteCb5);
+            checkBox.setChecked(false);
+        }
+
+    }
+    public void concreteOtherCBOnClicked(View view) {
+        CheckBox checkBox = (CheckBox) findViewById(R.id.concreteCb6);
+        checkBox.setChecked(false);
+    }
+
+    public void masonaryGCCBonClicked(View view) {
+
+        if (((CheckBox) view).isChecked()) {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.masonaryCb1);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.masonaryCb2);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.masonaryCb3);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.masonaryCb4);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.masonaryCb5);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.masonaryCb6);
+            checkBox.setChecked(false);
+        }
+    }
+    public void masonaryOtherCBOnClicked(View view) {
+        CheckBox checkBox = (CheckBox) findViewById(R.id.masonaryCb7);
+        checkBox.setChecked(false);
+    }
+
+    public void timberGCCBonClicked(View view) {
+
+        if (((CheckBox) view).isChecked()) {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.timberCb1);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.timberCb2);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.timberCb3);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.timberCb4);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.timberCb5);
+            checkBox.setChecked(false);
+            checkBox = (CheckBox) findViewById(R.id.timberCb6);
+            checkBox.setChecked(false);
+        }
+    }
+    public void timberOtherCBOnClicked(View view) {
+        CheckBox checkBox = (CheckBox) findViewById(R.id.timberCb7);
+        checkBox.setChecked(false);
     }
 }

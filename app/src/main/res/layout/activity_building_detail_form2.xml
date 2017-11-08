@@ -57,37 +57,50 @@
                     android:id="@+id/timberCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="timberOtherCBOnClicked"
                     android:text="Wet rot" />
 
                 <CheckBox
                     android:id="@+id/timberCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="timberOtherCBOnClicked"
                     android:text="Termite attack" />
 
                 <CheckBox
                     android:id="@+id/timberCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="timberOtherCBOnClicked"
                     android:text="Splits" />
 
                 <CheckBox
                     android:id="@+id/timberCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="timberOtherCBOnClicked"
                     android:text="Cracks" />
 
                 <CheckBox
                     android:id="@+id/timberCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="timberOtherCBOnClicked"
                     android:text="Deformation" />
 
                 <CheckBox
                     android:id="@+id/timberCb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="timberOtherCBOnClicked"
                     android:text="UV degradation" />
+
+                <CheckBox
+                    android:id="@+id/timberCb7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="timberGCCBonClicked"
+                    android:text="Good Condition" />
 
             </LinearLayout>
 
@@ -110,37 +123,50 @@
                     android:id="@+id/masonaryCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="masonaryOtherCBOnClicked"
                     android:text="Debonding of plaster and render" />
 
                 <CheckBox
                     android:id="@+id/masonaryCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="masonaryOtherCBOnClicked"
                     android:text="Rising damp" />
 
                 <CheckBox
                     android:id="@+id/masonaryCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="masonaryOtherCBOnClicked"
                     android:text="Salt attack" />
 
                 <CheckBox
                     android:id="@+id/masonaryCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="masonaryOtherCBOnClicked"
                     android:text="Cracks" />
 
                 <CheckBox
                     android:id="@+id/masonaryCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="masonaryOtherCBOnClicked"
                     android:text="Paint failure" />
 
                 <CheckBox
                     android:id="@+id/masonaryCb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="masonaryOtherCBOnClicked"
                     android:text="Deformation" />
+
+                <CheckBox
+                    android:id="@+id/masonaryCb7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="masonaryGCCBonClicked"
+                    android:text="Good Condition" />
 
             </LinearLayout>
 
@@ -163,31 +189,45 @@
                     android:id="@+id/concreteCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="concreteOtherCBOnClicked"
                     android:text="Corrosion" />
 
                 <CheckBox
                     android:id="@+id/concreteCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="concreteOtherCBOnClicked"
                     android:text="Spalling of conrete" />
 
                 <CheckBox
                     android:id="@+id/concreteCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="concreteOtherCBOnClicked"
                     android:text="Crack" />
 
                 <CheckBox
                     android:id="@+id/concreteCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="concreteOtherCBOnClicked"
                     android:text="Salt attack" />
 
                 <CheckBox
                     android:id="@+id/concreteCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="concreteOtherCBOnClicked"
                     android:text="Debonding of plaster and render" />
+
+                <CheckBox
+                    android:id="@+id/concreteCb6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="concreteGCCBonClicked"
+                    android:text="Good Condition" />
+
+
 
             </LinearLayout>
 
@@ -210,19 +250,29 @@
                     android:id="@+id/metalworksCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="metalworksOtherCBOnClicked"
                     android:text="Corrosion" />
 
                 <CheckBox
                     android:id="@+id/metalworksCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="metalworksOtherCBOnClicked"
                     android:text="Deformation" />
 
                 <CheckBox
                     android:id="@+id/metalworksCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="metalworksOtherCBOnClicked"
                     android:text="Paint failure" />
+
+                <CheckBox
+                    android:id="@+id/metalworksCb4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="metalworksGCCBonClicked"
+                    android:text="Good Condition" />
 
             </LinearLayout>
 
@@ -245,49 +295,64 @@
                     android:id="@+id/generalCb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Cracking" />
 
                 <CheckBox
                     android:id="@+id/generalCb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Abrasion wear/erosion" />
 
                 <CheckBox
                     android:id="@+id/generalCb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Debonding" />
 
                 <CheckBox
                     android:id="@+id/generalCb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Water seepage" />
 
                 <CheckBox
                     android:id="@+id/generalCb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Biological growth" />
 
                 <CheckBox
                     android:id="@+id/generalCb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Water chokage" />
 
                 <CheckBox
                     android:id="@+id/generalCb7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Ground settlement" />
 
                 <CheckBox
                     android:id="@+id/generalCb8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="generalOtherCBOnClicked"
                     android:text="Inappropriate intervention" />
+
+                <CheckBox
+                    android:id="@+id/generalCb9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="generalGCCBonClicked"
+                    android:text="Good Condition" />
 
             </LinearLayout>
 

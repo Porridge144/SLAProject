@@ -38,7 +38,7 @@ public class LevelPlan extends AppCompatActivity{
     private String floorPlanName;
 
 
-    private static int roomCount = 1, toiletCount = 1, corridorCount = 1, kitchenCount = 1, balconyCount = 1;
+    private static int roomCount = 1, toiletCount = 1, corridorCount = 1, kitchenCount = 1, balconyCount = 1, patioCount = 1;
     private ArrayList<View> viewArrayList = new ArrayList<>();
 
 
@@ -107,7 +107,7 @@ public class LevelPlan extends AppCompatActivity{
     }
 
     private void showOptionListView() {
-        String[] options = {"Room", "Toilet", "Corridor", "Kitchen", "Balcony"};
+        String[] options = {"Room", "Toilet", "Corridor", "Kitchen", "Balcony", "Patio"};
         ListAdapter optionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, options);
         ListView optionListView = new ListView(this);
         optionListView.setAdapter(optionAdapter);
@@ -154,6 +154,10 @@ public class LevelPlan extends AppCompatActivity{
                 labelString = optionChosen  + " " + balconyCount;
                 balconyCount += 1;
                 break;
+            case "Patio" :
+                labelString = optionChosen  + " " + patioCount;
+                patioCount += 1;
+                break;
         }
 
         dialog.dismiss();
@@ -179,6 +183,8 @@ public class LevelPlan extends AppCompatActivity{
                 editor.putString(roomListAsLevelStringName, tmp);
 
                 editor.apply();
+
+                textView.setBackgroundColor(Color.RED);
 
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
                 intent.putExtra("roomLabelString", textView.getText().toString());

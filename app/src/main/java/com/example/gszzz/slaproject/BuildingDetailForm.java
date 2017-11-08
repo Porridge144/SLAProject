@@ -23,7 +23,7 @@ import java.net.Inet4Address;
 public class BuildingDetailForm extends AppCompatActivity {
 
 
-    ListView structuralListView, architecturalListView, auxiliaryListView;
+    ListView structuralListView, architecturalListView, auxiliaryListView, rootListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,12 @@ public class BuildingDetailForm extends AppCompatActivity {
         spec.setIndicator("Auxiliary");
         host.addTab(spec);
 
+        //Tab 3
+        spec = host.newTabSpec("Tab Four");
+        spec.setContent(R.id.Tab4);
+        spec.setIndicator("Root");
+        host.addTab(spec);
+
         if (!currentLevelName.equals("North Elevation") &&
                 !currentLevelName.equals("South Elevation") &&
                 !currentLevelName.equals("West Elevation") &&
@@ -67,6 +73,7 @@ public class BuildingDetailForm extends AppCompatActivity {
         structuralListView = (ListView) findViewById(R.id.structuralListView);
         architecturalListView = (ListView) findViewById(R.id.architecturalListView);
         auxiliaryListView = (ListView) findViewById(R.id.auxiliaryListView);
+        rootListView = (ListView) findViewById(R.id.rootListView);
 
         structuralListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -93,6 +100,19 @@ public class BuildingDetailForm extends AppCompatActivity {
             }
         });
         auxiliaryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                ((TextView) view).setTextColor(Color.RED);
+
+                String itemName =String.valueOf(parent.getItemAtPosition(position));
+                Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
+                intent.putExtra("elementName", itemName);
+                startActivity(intent);
+            }
+        });
+
+        rootListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 

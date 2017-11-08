@@ -63,7 +63,8 @@ public class OutputGenerator {
         String[] structuralElementsArray = context.getResources().getStringArray(R.array.structuralElementsArray);
         String[] architecturalElementsArray = context.getResources().getStringArray(R.array.architecturalElementsArray);
         String[] auxiliaryElementsArray = context.getResources().getStringArray(R.array.auxiliaryElementsArray);
-        String[] combinedElementsArray = generalConcatAll(structuralElementsArray, architecturalElementsArray, auxiliaryElementsArray);
+        String[] rootElementsArray = context.getResources().getStringArray(R.array.rootElementsArray);
+        String[] combinedElementsArray = generalConcatAll(structuralElementsArray, architecturalElementsArray, auxiliaryElementsArray, rootElementsArray);
 
         for (String levelName: levelNames) {
 
@@ -76,6 +77,7 @@ public class OutputGenerator {
                 int count = 1;
                 int thresholdNumber1 = structuralElementsArray.length;
                 int thresholdNumber2 = structuralElementsArray.length + architecturalElementsArray.length;
+                int thresholdNumber3 = structuralElementsArray.length + architecturalElementsArray.length + rootElementsArray.length;
                 String typeString = "structural";
 
                 for (String combinedElement : combinedElementsArray) {
@@ -107,12 +109,14 @@ public class OutputGenerator {
                             csvText.append("General").append(DELIMITER).append(separateDefects(sp.getString(generalCheckBoxContentStringName, ""))).append(DELIMITER).append(ENDLINE);
                             csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
                         }
+
                         csvText.setLength(csvText.length() - 3);
                         csvText.setLength(csvText.length() - 1);
                         csvText.append(sp.getString(location + "_" + combinedElement + "_" + "conditionClassButtonString", "NONE")).append(ENDLINE);
                     }
                     if (count == thresholdNumber1) typeString = "architectural";
-                    if (count == thresholdNumber2) typeString ="auxiliary";
+                    if (count == thresholdNumber2) typeString = "auxiliary";
+                    if (count == thresholdNumber3) typeString = "root";
                     count += 1;
                 }
 
@@ -177,38 +181,54 @@ public class OutputGenerator {
             int count = 1;
             int thresholdNumber1 = structuralElementsArray.length;
             int thresholdNumber2 = structuralElementsArray.length + architecturalElementsArray.length;
+            int thresholdNumber3 = structuralElementsArray.length + architecturalElementsArray.length + rootElementsArray.length;
             String typeString = "structural";
 
             for (String combinedElement : combinedElementsArray) {
                 String elementIndicator = combinedName + "_" + combinedName + "_" + combinedElement + "_" + "ifElementExist";
                 if (sp.getBoolean(elementIndicator, false)) {
+
+//                    boolean noDefect = true;
+
                     ifElevationExist = true;
                     csvText.append(DELIMITER).append(typeString).append(DELIMITER).append(combinedElement).append(DELIMITER);
                     String timberCheckBoxContentStringName = combinedName + "_" + combinedName + "_" + combinedElement + "_" + "timberCheckBoxContentString";
                     if (!sp.getString(timberCheckBoxContentStringName, "").equals("") && !sp.getString(timberCheckBoxContentStringName, "").equals("NA")) {
                         csvText.append("Timber").append(DELIMITER).append(separateDefects(sp.getString(timberCheckBoxContentStringName, ""))).append(DELIMITER).append(ENDLINE);
                         csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
+//                        noDefect = false;
                     }
                     String masonaryCheckBoxContentStringName = combinedName + "_" + combinedName + "_" + combinedElement + "_" + "masonaryCheckBoxContentString";
                     if (!sp.getString(masonaryCheckBoxContentStringName, "").equals("") && !sp.getString(masonaryCheckBoxContentStringName, "").equals("NA")) {
                         csvText.append("Masonry").append(DELIMITER).append(separateDefects(sp.getString(masonaryCheckBoxContentStringName, ""))).append(DELIMITER).append(ENDLINE);
                         csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
+//                        noDefect = false;
                     }
                     String concreteCheckBoxContentStringName = combinedName + "_" + combinedName + "_" + combinedElement + "_" + "concreteCheckBoxContentString";
                     if (!sp.getString(concreteCheckBoxContentStringName, "").equals("") && !sp.getString(concreteCheckBoxContentStringName, "").equals("NA")) {
                         csvText.append("Concrete").append(DELIMITER).append(separateDefects(sp.getString(concreteCheckBoxContentStringName, ""))).append(DELIMITER).append(ENDLINE);
                         csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
+//                        noDefect = false;
                     }
                     String metalworksCheckBoxContentStringName = combinedName + "_" + combinedName + "_" + combinedElement + "_" + "metalworksCheckBoxContentString";
                     if (!sp.getString(metalworksCheckBoxContentStringName, "").equals("") && !sp.getString(metalworksCheckBoxContentStringName, "").equals("NA")) {
                         csvText.append("Metalworks").append(DELIMITER).append(separateDefects(sp.getString(metalworksCheckBoxContentStringName, ""))).append(DELIMITER).append(ENDLINE);
                         csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
+//                        noDefect = false;
                     }
                     String generalCheckBoxContentStringName = combinedName + "_" + combinedName + "_" + combinedElement + "_" + "generalCheckBoxContentString";
                     if (!sp.getString(generalCheckBoxContentStringName, "").equals("") && !sp.getString(generalCheckBoxContentStringName, "").equals("NA")) {
                         csvText.append("General").append(DELIMITER).append(separateDefects(sp.getString(generalCheckBoxContentStringName, ""))).append(DELIMITER).append(ENDLINE);
                         csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
+//                        noDefect = false;
+
                     }
+
+//                    if (noDefect) {
+//                        csvText.append("No Defect").append(DELIMITER).append("No Defect").append(DELIMITER).append(ENDLINE);
+//                        csvText.append(DELIMITER).append(DELIMITER).append(DELIMITER);
+//                    }
+
                     csvText.setLength(csvText.length() - 3);
                     csvText.setLength(csvText.length() - 1);
                     csvText.append(sp.getString(combinedName + "_" + combinedName + "_" + combinedElement + "_" + "conditionClassButtonString", "NONE")).append(ENDLINE);
@@ -217,6 +237,7 @@ public class OutputGenerator {
 
                 if (count == thresholdNumber1) typeString = "architectural";
                 if (count == thresholdNumber2) typeString ="auxiliary";
+                if (count == thresholdNumber3) typeString = "root";
                 count += 1;
             }
 
