@@ -3,24 +3,45 @@
     <string name="ip_address">http://121.7.122.74:8081</string>
     <string name="preference_filename">com.example.gszzz.slaproject.STORAGE_FILE</string>
     <string-array name="structuralElementsArray">
-        <item>Foundations</item>
-        <item>Walls</item>
-        <item>Columns</item>
-        <item>Beams</item>
-        <item>Floors/Slabs</item>
-        <item>Stairs</item>
-        <item>Roofs</item>
+        <item>Beam</item>
+        <item>Column</item>
+        <item>Floors Slabs</item>
+        <item>Foundation Footing</item>
+        <item>Wall</item>
+        <item>Floor Joist</item>
+        <item>Corbel</item>
         <item>Others</item>
     </string-array>
     <string-array name="architecturalElementsArray">
-        <item>Windows</item>
-        <item>Doors</item>
+        <item>Door</item>
+        <item>Window</item>
         <item>Balconies</item>
         <item>Wall Finishes</item>
-        <item>Floor Finishes</item>
-        <item>Painting</item>
-        <item>Plasters</item>
-        <item>Renders</item>
+        <item>Wall(NLB)</item>
+        <item>Ceiling Finishes</item>
+        <item>Decorative Feature</item>
+        <item>Staircase</item>
         <item>Other</item>
+    </string-array>
+    <string-array name="auxiliaryElementsArray">
+        <item>Rain Water Goods</item>
+        <item>Five Protection</item>
+        <item>Sanitary</item>
+        <item>Garage</item>
+    </string-array>
+    <string-array name="elevationNamesArray">
+        <item>North Elevation</item>
+        <item>South Elevation</item>
+        <item>East Elevation</item>
+        <item>West Elevation</item>
+    </string-array>
+    <string-array name="roofNamesArray">
+        <item>Roof</item>
+    </string-array>
+    <string-array name="landscapeNamesArray">
+        <item>Apron</item>
+        <item>Drainage</item>
+        <item>Driveway</item>
+        <item>Boundary</item>
     </string-array>
 </resources>

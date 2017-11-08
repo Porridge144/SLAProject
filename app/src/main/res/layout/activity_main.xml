@@ -5,12 +5,22 @@
     android:layout_height="match_parent"
     tools:context="com.example.gszzz.slaproject.MainActivity">
 
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Survey"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
     <Button
         android:id="@+id/button9"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="60dp"
         android:onClick="refreshListButtonOnClicked"
         android:text="Refresh List" />
 

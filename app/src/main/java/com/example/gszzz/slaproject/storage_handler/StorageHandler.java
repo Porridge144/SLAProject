@@ -66,10 +66,10 @@ public class StorageHandler {
 
 
                     String CCRatingTmp = "";
+                    if (values[13].contains("0")) CCRatingTmp = "0";
                     if (values[13].contains("1")) CCRatingTmp = "1";
                     if (values[13].contains("2")) CCRatingTmp = "2";
                     if (values[13].contains("3")) CCRatingTmp = "3";
-                    if (values[13].contains("4")) CCRatingTmp = "4";
                     editor.putString(itemName + "_" + "conditionClassButtonString", CCRatingTmp);
 
                     //Flag indicating existence of an element

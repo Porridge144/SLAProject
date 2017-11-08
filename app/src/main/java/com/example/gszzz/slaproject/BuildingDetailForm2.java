@@ -1,5 +1,6 @@
 package com.example.gszzz.slaproject;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -35,6 +39,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BuildingDetailForm2 extends AppCompatActivity {
+
+    static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 10;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private String currentPhotoPath = "";
     private Uri photoURI;
@@ -84,8 +90,50 @@ public class BuildingDetailForm2 extends AppCompatActivity {
 
     }
     public void takePictureOnClicked(View view) {
-        Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
+        int permissionCheck = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permissionCheck == -1)
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+        else
+            proceedPhotoTaking();
+
+//        if (isExternalStorageWritable()) {
+//            Toast.makeText(getApplicationContext(), "Writable...", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Not Writable...", Toast.LENGTH_SHORT).show();
+//        }
+
+    }
+
+    public void onRequestPermissionsResult(int requestCode,
+       String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    proceedPhotoTaking();
+
+                } else {
+                        Toast.makeText(getApplication(), "Permission Denied...Task cancelled...", Toast.LENGTH_LONG).show();
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+    private void proceedPhotoTaking() {
+
+        Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         //Save information in shared preference file
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
@@ -126,21 +174,23 @@ public class BuildingDetailForm2 extends AppCompatActivity {
 //            Uri photoURI = FileProvider.getUriForFile(this,
 //                    "com.example.gszzz.slaproject.android.fileprovider",
 //                    photoFile);
-            photoURI = Uri.fromFile(photoFile);
+//            photoURI = Uri.fromFile(photoFile);
+//            photoURI = Uri.parse(currentPhotoPath);
+            Uri photoURI = FileProvider.getUriForFile(this,
+                    "com.example.gszzz.slaproject.android.fileprovider",
+                    photoFile);
             takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-            startActivityForResult(takePhotoIntent, REQUEST_IMAGE_CAPTURE);
+//            Toast.makeText(getApplication(), currentPhotoPath, Toast.LENGTH_LONG).show();
+            try {
+                startActivityForResult(takePhotoIntent, REQUEST_IMAGE_CAPTURE);
+            } catch (Exception e) {
+                Toast.makeText(getApplication(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
         }
-
-//        if (isExternalStorageWritable()) {
-//            Toast.makeText(getApplicationContext(), "Writable...", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Not Writable...", Toast.LENGTH_SHORT).show();
-//        }
-
     }
 
 
-    public boolean isExternalStorageWritable(String imageFileName) {
+    public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             return true;

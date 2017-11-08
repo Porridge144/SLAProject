@@ -5,13 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gszzz.slaproject.server_interaction.LoginForm;
@@ -21,7 +24,7 @@ import com.example.gszzz.slaproject.storage_handler.OutputGenerator;
 public class LevelsForm extends AppCompatActivity {
 
     String surveyName;
-    ListView levelListListView;
+    ListView levelListListView, elevationsListListView, roofListListView, landscapeListListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,11 @@ public class LevelsForm extends AppCompatActivity {
         }
 
         levelListListView = (ListView) findViewById(R.id.levelListListView);
+        elevationsListListView = (ListView) findViewById(R.id.elevationsListListView);
+        roofListListView = (ListView) findViewById(R.id.roofListListView);
+        landscapeListListView = (ListView) findViewById(R.id.landscapeListListView);
+
+
 
         //Query survey for level list
         //Set up listener for survey list query result intent
@@ -75,8 +83,12 @@ public class LevelsForm extends AppCompatActivity {
 //                        Toast.LENGTH_SHORT).show();
                 //=====================================================================================================
 
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) levelListListView.getLayoutParams();
+                layoutParams.height = elevationsListListView.getHeight() / 4 * levelListRefinedNoExtension.length;
+                levelListListView.setLayoutParams(layoutParams);
                 ListAdapter listAdapter = new ArrayAdapter<>(LevelsForm.this, android.R.layout.simple_list_item_1, levelListRefinedNoExtension);
                 levelListListView.setAdapter(listAdapter);
+
 
                 levelListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -90,6 +102,8 @@ public class LevelsForm extends AppCompatActivity {
                         editor.putString("currentLevelName", levelListRefinedNoExtension[i]);
                         editor.apply();
 
+                        ((TextView) view).setTextColor(Color.RED);
+
                         intent.putExtra("floorPlanName", levelListRefined[i]);
                         intent.putExtra("surveyName", surveyName);
                         startActivity(intent);
@@ -100,6 +114,57 @@ public class LevelsForm extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(ServerQueryAsyncTask.LEVEL_LIST_QUERY_RESULT);
         registerReceiver(levelListQueryResultListener, intentFilter);
 
+        elevationsListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("currentLevelName", String.valueOf(adapterView.getItemAtPosition(i)));
+                editor.putString("roomLabelString", String.valueOf(adapterView.getItemAtPosition(i)));
+                editor.apply();
+
+                ((TextView) view).setTextColor(Color.RED);
+
+                Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+                startActivity(intent);
+            }
+        });
+
+        roofListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("currentLevelName", String.valueOf(adapterView.getItemAtPosition(i)));
+                editor.putString("roomLabelString", String.valueOf(adapterView.getItemAtPosition(i)));
+                editor.apply();
+
+                ((TextView) view).setTextColor(Color.RED);
+
+                Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+                startActivity(intent);
+            }
+        });
+
+        landscapeListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("currentLevelName", String.valueOf(adapterView.getItemAtPosition(i)));
+                editor.putString("roomLabelString", String.valueOf(adapterView.getItemAtPosition(i)));
+                editor.apply();
+
+                ((TextView) view).setTextColor(Color.RED);
+
+                Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+                startActivity(intent);
+            }
+        });
+
 
         //Call background activity to query server
         String method = "levellistquery";
@@ -108,58 +173,6 @@ public class LevelsForm extends AppCompatActivity {
 
     }
 
-    public void facadeOnClicked(View view) {
-    }
-
-    public void northElevationOnClick(View view) {
-
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentLevelName", "NorthElevation");
-        editor.putString("roomLabelString", "NorthElevation");
-        editor.apply();
-
-        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
-        startActivity(intent);
-    }
-
-    public void westElevationOnClick(View view) {
-
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentLevelName", "WestElevation");
-        editor.putString("roomLabelString", "WestElevation");
-        editor.apply();
-
-        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
-        startActivity(intent);
-    }
-
-    public void southElevationOnClick(View view) {
-
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentLevelName", "SouthElevation");
-        editor.putString("roomLabelString", "SouthElevation");
-        editor.apply();
-
-        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
-        startActivity(intent);
-    }
-
-    public void eastElevationOnClick(View view) {
-
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentLevelName", "EastElevation");
-        editor.putString("roomLabelString", "EastElevation");
-
-
-        editor.apply();
-
-        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
-        startActivity(intent);
-    }
 
     public void submitButtonOnClicked(View view) {
 

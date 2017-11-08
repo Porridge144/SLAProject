@@ -38,7 +38,7 @@ public class LevelPlan extends AppCompatActivity{
     private String floorPlanName;
 
 
-    private static int roomCount = 1, kitchenCount = 1, toiletCount = 1, othersCount = 1;
+    private static int roomCount = 1, toiletCount = 1, corridorCount = 1, kitchenCount = 1, balconyCount = 1;
     private ArrayList<View> viewArrayList = new ArrayList<>();
 
 
@@ -107,7 +107,7 @@ public class LevelPlan extends AppCompatActivity{
     }
 
     private void showOptionListView() {
-        String[] options = {"Kitchen", "Toilet", "Room", "Others"};
+        String[] options = {"Room", "Toilet", "Corridor", "Kitchen", "Balcony"};
         ListAdapter optionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, options);
         ListView optionListView = new ListView(this);
         optionListView.setAdapter(optionAdapter);
@@ -146,9 +146,13 @@ public class LevelPlan extends AppCompatActivity{
                 labelString = optionChosen  + " " + roomCount;
                 roomCount += 1;
                 break;
-            case "Others" :
-                labelString = optionChosen  + " " + othersCount;
-                othersCount += 1;
+            case "Corridor" :
+                labelString = optionChosen  + " " + corridorCount;
+                corridorCount += 1;
+                break;
+            case "Balcony" :
+                labelString = optionChosen  + " " + balconyCount;
+                balconyCount += 1;
                 break;
         }
 
