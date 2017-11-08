@@ -65,7 +65,7 @@ public class BuildingSelectionForm extends AppCompatActivity {
 //        String[] infoStrings = storageHandler.execute(getApplicationContext(), StorageHandler.DATA_READ, StorageHandler.PAGE_BUILDING_SELECTION_FORM);
 //        Toast.makeText(getApplicationContext(), infoStrings[0] + "\n" + infoStrings[1], Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, PreInfoForm.class);
+        Intent intent = new Intent(this, BasicInfoForm.class);
         intent.putExtra("surveyName", surveyName);
         startActivity(intent);
     }

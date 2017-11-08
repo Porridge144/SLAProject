@@ -6,30 +6,9 @@
     tools:context="com.example.gszzz.slaproject.MainActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="newSurveyButtonOnclick"
-        android:text="Continue Current Survey"
-        android:layout_marginTop="13dp"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="newSurveyButtonOnclick"
-        android:layout_alignTop="@+id/button"
-        android:text="Start a new survey"
-        android:layout_marginTop="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:onClick="refreshListButtonOnClicked"

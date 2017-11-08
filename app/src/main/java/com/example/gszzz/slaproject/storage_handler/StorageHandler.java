@@ -32,6 +32,10 @@ public class StorageHandler {
                     editor.putString("yearBuiltString", values[4]);
                     editor.putString("typeOtherString", values[5]);
                     editor.putString("vacancyOtherString", values[6]);
+
+                    editor.putString("addressString", values[7]);
+                    editor.putString("inspectionDateString", values[8]);
+                    editor.putString("inspectorString", values[9]);
                     break;
                 case PAGE_BUILDING_DETAIL_FORM2:
                     String currentLevelName = sharedPreferences.getString("currentLevelName", "");
@@ -83,31 +87,23 @@ public class StorageHandler {
                     editor.putString("buildingNameString", buildingNameString);
 
                     break;
-                case PAGE_PRE_INFO_FORM:
-                    String addressString = values[2];
-                    String inspectionDateString = values[3];
-                    String inspectorString = values[4];
-
-                    editor.putString("addressString", addressString);
-                    editor.putString("inspectionDateString", inspectionDateString);
-                    editor.putString("inspectorString", inspectorString);
-
-                    break;
             }
             editor.apply();
         } else if(values[0].equals(DATA_READ)) {
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getString(R.string.preference_filename), Context.MODE_PRIVATE);
             switch (values[1]){
                 case PAGE_BASIC_INFO:
-                    String typeButtonString = sharedPreferences.getString("typeButtonString", "");
-                    String vacancyButtonString = sharedPreferences.getString("vacancyButtonString", "");
-                    String yearBuiltString = sharedPreferences.getString("yearBuiltString", "");
-                    String otherString = sharedPreferences.getString("otherString", "");
+                    return new String[] {
+                            sharedPreferences.getString("typeButtonString", ""),
+                            sharedPreferences.getString("vacancyButtonString", ""),
+                            sharedPreferences.getString("yearBuiltString", ""),
+                            sharedPreferences.getString("otherString", ""),
 
-                    String tmp = typeButtonString + "\n" + vacancyButtonString + "\n" + yearBuiltString + "\n" + otherString;
-                    Toast.makeText(context, tmp, Toast.LENGTH_SHORT).show();
+                            sharedPreferences.getString("addressString", ""),
+                            sharedPreferences.getString("inspectionDateString", ""),
+                            sharedPreferences.getString("inspectorString", "")
+                    };
 
-                    break;
                 case PAGE_BUILDING_DETAIL_FORM2:
                     String currentLevelName = sharedPreferences.getString("currentLevelName", "");
                     String roomLabelString = sharedPreferences.getString("roomLabelString", "");
@@ -134,11 +130,6 @@ public class StorageHandler {
                     break;
                 case PAGE_BUILDING_SELECTION_FORM:
                     return new String[] {sharedPreferences.getString("clusterString", ""), sharedPreferences.getString("buildingNameString", "")};
-//                    break;
-                case PAGE_PRE_INFO_FORM:
-                    return new String[] {sharedPreferences.getString("addressString", ""),
-                            sharedPreferences.getString("inspectionDateString", ""),
-                            sharedPreferences.getString("inspectorString", "")};
 //                    break;
             }
 

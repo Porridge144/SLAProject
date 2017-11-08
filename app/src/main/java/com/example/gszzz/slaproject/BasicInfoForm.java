@@ -16,6 +16,8 @@ public class BasicInfoForm extends AppCompatActivity {
     String surveyName;
     EditText type_othersEditText, vacancy_othersEditText;
 
+    EditText addressEditText, inspectionDateEditText, inspectorEditText;
+
     RadioGroup type_radioGroup, vacancy_radioGroup;
     EditText yearBuiltEditText;
 
@@ -30,9 +32,14 @@ public class BasicInfoForm extends AppCompatActivity {
         type_othersEditText = (EditText) findViewById(R.id.type_otherEditText);
         vacancy_othersEditText = (EditText) findViewById(R.id.vacancy_otherEditText);
 
+        addressEditText = (EditText) findViewById(R.id.addressEditText);
+        inspectionDateEditText = (EditText) findViewById(R.id.inspectionDateEditText);
+        inspectorEditText = (EditText) findViewById(R.id.inspectorEditText);
+
         type_radioGroup = (RadioGroup) findViewById(R.id.typeRadioGroup);
         vacancy_radioGroup = (RadioGroup) findViewById(R.id.vacancyRadioGroup);
         yearBuiltEditText = (EditText) findViewById(R.id.yearBuiltEditText);
+
     }
 
     @Override
@@ -48,7 +55,10 @@ public class BasicInfoForm extends AppCompatActivity {
     public void nextStepOnClicked(View view) {
 
         if (type_radioGroup.getCheckedRadioButtonId() != -1 && vacancy_radioGroup.getCheckedRadioButtonId() != -1
-                && !yearBuiltEditText.getText().toString().equals("")) {
+                && !yearBuiltEditText.getText().toString().equals("")
+                && !addressEditText.getText().toString().equals("")
+                && !inspectionDateEditText.getText().toString().equals("")
+                && !inspectorEditText.getText().toString().equals("")) {
 
             //Save data
             RadioButton tmpButton = (RadioButton) findViewById(type_radioGroup.getCheckedRadioButtonId());
@@ -59,9 +69,15 @@ public class BasicInfoForm extends AppCompatActivity {
             String typeOtherString = type_othersEditText.getText().toString();
             String vacancyOtherString = vacancy_othersEditText.getText().toString();
 
+            String addressString = addressEditText.getText().toString();
+            String inspectionDateString = inspectionDateEditText.getText().toString();
+            String inspectorString = inspectorEditText.getText().toString();
+
+
             StorageHandler storageHandler = new StorageHandler();
             storageHandler.execute(getApplicationContext(), StorageHandler.DATA_WRITE, StorageHandler.PAGE_BASIC_INFO,
-                    typeButtonString, vacancyButtonString, yearBuiltString, typeOtherString, vacancyOtherString);
+                    typeButtonString, vacancyButtonString, yearBuiltString, typeOtherString, vacancyOtherString,
+                    addressString, inspectionDateString, inspectorString);
 
 
             //Go to next page

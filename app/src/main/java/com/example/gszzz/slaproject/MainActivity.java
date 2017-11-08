@@ -64,11 +64,6 @@ public class MainActivity extends AppCompatActivity {
         serverQueryAsyncTask.execute(method, username);
     }
 
-    public void newSurveyButtonOnclick(View view) {
-        Intent i = new Intent(this, BuildingSelectionForm.class);
-        startActivity(i);
-    }
-
 
     public void refreshListButtonOnClicked(View view) {
     }
