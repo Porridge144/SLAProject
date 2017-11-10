@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gszzz.slaproject.server_interaction.LoginForm;
 import com.example.gszzz.slaproject.server_interaction.ServerQueryAsyncTask;
@@ -29,7 +28,7 @@ public class LevelsForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_levels_form);
+        setContentView(R.layout.activity_5_levels_form);
 
         try {
             surveyName = getIntent().getStringExtra("surveyName");

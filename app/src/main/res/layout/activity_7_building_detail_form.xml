@@ -79,10 +79,10 @@
                         android:orientation="vertical">
 
                         <ListView
-                            android:id="@+id/rootListView"
+                            android:id="@+id/roofListView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:entries="@array/rootElementsArray"/>
+                            android:entries="@array/roofElementsArray"/>
                     </LinearLayout>
 
                 </FrameLayout>

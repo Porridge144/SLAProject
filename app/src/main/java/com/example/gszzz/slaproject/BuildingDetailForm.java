@@ -3,22 +3,14 @@ package com.example.gszzz.slaproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
-
-import java.net.Inet4Address;
 
 public class BuildingDetailForm extends AppCompatActivity {
 
@@ -28,7 +20,7 @@ public class BuildingDetailForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_building_detail_form);
+        setContentView(R.layout.activity_7_building_detail_form);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
@@ -60,8 +52,17 @@ public class BuildingDetailForm extends AppCompatActivity {
         //Tab 3
         spec = host.newTabSpec("Tab Four");
         spec.setContent(R.id.Tab4);
-        spec.setIndicator("Root");
+        spec.setIndicator("Roof");
         host.addTab(spec);
+
+        if (currentLevelName.equals("Roof")) {
+            host.setCurrentTab(3);
+            host.getTabWidget().getChildTabViewAt(0).setVisibility(View.GONE);
+            host.getTabWidget().getChildTabViewAt(1).setVisibility(View.GONE);
+
+        } else {
+            host.getTabWidget().getChildTabViewAt(3).setVisibility(View.GONE);
+        }
 
         if (!currentLevelName.equals("North Elevation") &&
                 !currentLevelName.equals("South Elevation") &&
@@ -73,7 +74,7 @@ public class BuildingDetailForm extends AppCompatActivity {
         structuralListView = (ListView) findViewById(R.id.structuralListView);
         architecturalListView = (ListView) findViewById(R.id.architecturalListView);
         auxiliaryListView = (ListView) findViewById(R.id.auxiliaryListView);
-        rootListView = (ListView) findViewById(R.id.rootListView);
+        rootListView = (ListView) findViewById(R.id.roofListView);
 
         structuralListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

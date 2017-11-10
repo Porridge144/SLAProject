@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -21,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gszzz.slaproject.server_interaction.ImageDownloadAsyncTask;
-import com.example.gszzz.slaproject.server_interaction.ServerQueryAsyncTask;
 
 import java.util.ArrayList;
 
@@ -55,7 +53,7 @@ public class LevelPlan extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_plan);
+        setContentView(R.layout.activity_6_level_plan);
 
         //Which item got clicked
         floorPlanName = getIntent().getStringExtra("floorPlanName");

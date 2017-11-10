@@ -17,7 +17,7 @@ public class LoginForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_form);
+        setContentView(R.layout.activity_1_login_form);
 
         //Clear existing shared preference
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);

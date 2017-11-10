@@ -59,7 +59,7 @@ public class BuildingDetailForm2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_building_detail_form2);
+        setContentView(R.layout.activity_8_building_detail_form2);
         picturesLinearLayout = (LinearLayout) findViewById(R.id.picturesLinearLayout);
         timberOptionsLinearLayout = (LinearLayout) findViewById(R.id.timberOptionsLinearLayout);
         masonaryOptionsLinearLayout = (LinearLayout) findViewById(R.id.masonaryOptionsLinearLayout);
