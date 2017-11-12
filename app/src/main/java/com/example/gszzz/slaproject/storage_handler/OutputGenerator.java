@@ -67,7 +67,7 @@ public class OutputGenerator {
 
         for (String levelName: levelNames) {
 
-            String[] rooms = sp.getString(levelName + "RoomList", "").split(":");
+            String[] rooms = sp.getString(levelName + "_" + "RoomList", "").split(":");
             for (String roomName : rooms) {
                 String location = levelName + "_" + roomName;
 //                csvText.append(location).append(DELIMITER).append(ENDLINE);

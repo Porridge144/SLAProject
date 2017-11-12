@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class LevelPlan extends AppCompatActivity{
 
-    private int position;
     private ImageView imageView;
     private String optionChosen;
     private AlertDialog dialog;
@@ -37,7 +36,6 @@ public class LevelPlan extends AppCompatActivity{
 
 
     private static int roomCount = 1, toiletCount = 1, corridorCount = 1, kitchenCount = 1, balconyCount = 1, patioCount = 1;
-    private ArrayList<View> viewArrayList = new ArrayList<>();
 
 
 /*    //Check for permission
@@ -67,6 +65,59 @@ public class LevelPlan extends AppCompatActivity{
 
         ImageDownloadAsyncTask imageDownloadAsyncTask = new ImageDownloadAsyncTask(this, imageView);
         imageDownloadAsyncTask.execute(surveyName, floorPlanName);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        String levelRoomListString = sharedPreferences.getString(levelName + "_" + "RoomList", "");
+        if (!levelRoomListString.equals("")) {
+            String[] levelRooms = levelRoomListString.split(":");
+            for (String roomName : levelRooms) {
+                final TextView textView = new TextView(this);
+                textView.setText(roomName);
+                textView.setTextSize(18);
+                textView.setTextColor(Color.WHITE);
+                textView.setBackgroundColor(Color.RED);
+
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                );
+                final int leftMargin = sharedPreferences.getInt(levelName + "_" + roomName + "_" + "leftMargin", 0);
+                final int topMargin = sharedPreferences.getInt(levelName + "_" + roomName + "_" + "topMargin", 0);
+
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+//                        //Save room label in the shared preference file
+//                        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//                        editor.putString("roomLabelString", textView.getText().toString());
+
+//                        //Save room label into the room list of this specific level
+//                        String roomListAsLevelStringName = levelName + "_" + "RoomList";
+//                        String tmp = sharedPreferences.getString(roomListAsLevelStringName, "");
+//                        tmp += (textView.getText().toString() + ":");
+//                        editor.putString(roomListAsLevelStringName, tmp);
+//
+//                        editor.putInt(levelName + "_" + textView.getText().toString() + "_" + "leftMargin", leftMargin);
+//                        editor.putInt(levelName + "_" + textView.getText().toString() + "_" + "topMargin", topMargin);
+
+//                        editor.apply();
+
+//                        textView.setBackgroundColor(Color.RED);
+
+                        Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
+                        intent.putExtra("roomLabelString", textView.getText().toString());
+                        startActivity(intent);
+                    }
+                });
+
+                layoutParams.leftMargin = leftMargin;
+                layoutParams.topMargin = topMargin;
+
+                relativeLayout.addView(textView, layoutParams);
+            }
+        }
 
 
     }
@@ -165,6 +216,14 @@ public class LevelPlan extends AppCompatActivity{
         textView.setTextSize(18);
         textView.setTextColor(Color.WHITE);
         textView.setBackgroundColor(Color.BLUE);
+
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        final int leftMargin = this.x - 9 * (5 + label.length());
+        final int topMargin = this.y - 209 - 15;
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,10 +234,13 @@ public class LevelPlan extends AppCompatActivity{
                 editor.putString("roomLabelString", textView.getText().toString());
 
                 //Save room label into the room list of this specific level
-                String roomListAsLevelStringName = levelName + "RoomList";
+                String roomListAsLevelStringName = levelName + "_" + "RoomList";
                 String tmp = sharedPreferences.getString(roomListAsLevelStringName, "");
                 tmp += (textView.getText().toString() + ":");
                 editor.putString(roomListAsLevelStringName, tmp);
+
+                editor.putInt(levelName + "_" + textView.getText().toString() + "_" + "leftMargin", leftMargin);
+                editor.putInt(levelName + "_" + textView.getText().toString() + "_" + "topMargin", topMargin);
 
                 editor.apply();
 
@@ -189,14 +251,9 @@ public class LevelPlan extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        layoutParams.leftMargin = this.x - 9 * (5 + label.length());
-        layoutParams.topMargin = this.y - 209 - 15;
 
-        viewArrayList.add(textView);
+        layoutParams.leftMargin = leftMargin;
+        layoutParams.topMargin = topMargin;
 
         relativeLayout.addView(textView, layoutParams);
 

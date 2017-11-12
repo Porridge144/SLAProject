@@ -11,20 +11,27 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BuildingDetailForm extends AppCompatActivity {
 
 
-    ListView structuralListView, architecturalListView, auxiliaryListView, rootListView;
+    ListView structuralListView, architecturalListView, auxiliaryListView, roofListView;
+    private static boolean performedClickFlag = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_7_building_detail_form);
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
-        String currentLevelName = sharedPreferences.getString("currentLevelName", "");
+        final SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor= sharedPreferences.edit();
+        final String currentLevelName = sharedPreferences.getString("currentLevelName", "");
+
+        String levelElementNames = sharedPreferences.getString(currentLevelName + "_" + "elementNames", "");
+
+
 
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
@@ -74,7 +81,9 @@ public class BuildingDetailForm extends AppCompatActivity {
         structuralListView = (ListView) findViewById(R.id.structuralListView);
         architecturalListView = (ListView) findViewById(R.id.architecturalListView);
         auxiliaryListView = (ListView) findViewById(R.id.auxiliaryListView);
-        rootListView = (ListView) findViewById(R.id.roofListView);
+        roofListView = (ListView) findViewById(R.id.roofListView);
+
+
 
         structuralListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,12 +91,21 @@ public class BuildingDetailForm extends AppCompatActivity {
 
                 ((TextView) view).setTextColor(Color.RED);
 
-                String itemName =String.valueOf(parent.getItemAtPosition(position));
+                String itemName = String.valueOf(parent.getItemAtPosition(position));
+
+                //Save element names for current level
+                String levelElementNames = sharedPreferences.getString(currentLevelName + "_" + "elementNames", "");
+                levelElementNames += itemName + ":";
+                editor.putString(currentLevelName + "_" + "elementNames", levelElementNames);
+                editor.apply();
+
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
                 intent.putExtra("elementName", itemName);
                 startActivity(intent);
+
             }
         });
+
         architecturalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,6 +113,13 @@ public class BuildingDetailForm extends AppCompatActivity {
                 ((TextView) view).setTextColor(Color.RED);
 
                 String itemName =String.valueOf(parent.getItemAtPosition(position));
+
+                //Save element names for current level
+                String levelElementNames = sharedPreferences.getString(currentLevelName + "_" + "elementNames", "");
+                levelElementNames += itemName + ":";
+                editor.putString(currentLevelName + "_" + "elementNames", levelElementNames);
+                editor.apply();
+
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
                 intent.putExtra("elementName", itemName);
                 startActivity(intent);
@@ -107,24 +132,94 @@ public class BuildingDetailForm extends AppCompatActivity {
                 ((TextView) view).setTextColor(Color.RED);
 
                 String itemName =String.valueOf(parent.getItemAtPosition(position));
+
+                //Save element names for current level
+                String levelElementNames = sharedPreferences.getString(currentLevelName + "_" + "elementNames", "");
+                levelElementNames += itemName + ":";
+                editor.putString(currentLevelName + "_" + "elementNames", levelElementNames);
+                editor.apply();
+
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
                 intent.putExtra("elementName", itemName);
                 startActivity(intent);
             }
         });
 
-        rootListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        roofListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 ((TextView) view).setTextColor(Color.RED);
 
+
                 String itemName =String.valueOf(parent.getItemAtPosition(position));
+
+                //Save element names for current level
+                String levelElementNames = sharedPreferences.getString(currentLevelName + "_" + "elementNames", "");
+                levelElementNames += itemName + ":";
+                editor.putString(currentLevelName + "_" + "elementNames", levelElementNames);
+                editor.apply();
+
                 Intent intent = new Intent(getApplicationContext(), BuildingDetailForm2.class);
                 intent.putExtra("elementName", itemName);
                 startActivity(intent);
             }
         });
+
+
+        try {
+            if (!levelElementNames.equals("")) {
+                String[] elementsNames = levelElementNames.split(":");
+                for (String elementName : elementsNames) {
+                    String[] tmpElementNames = getResources().getStringArray(R.array.structuralElementsArray);
+                    for (int i = 0; i < tmpElementNames.length; i++) {
+                        if (elementName.equals(tmpElementNames[i])) {
+//                            TextView tmpTextView = (TextView) structuralListView.getAdapter().getView(i, null, null);
+//                            structuralListView.performItemClick(structuralListView.getChildAt(i), i, structuralListView.getItemIdAtPosition(i));
+
+//                            String tmp = "AA";
+//                            ((TextView) structuralListView.getAdapter().getView(i, null, null)).performClick();
+
+//                            Toast.makeText(getApplicationContext(), String.valueOf(tmp), Toast.LENGTH_LONG).show();
+                            performedClickFlag = true;
+                            structuralListView.performItemClick(structuralListView.getAdapter().getView(i, null, null), i,
+                                    structuralListView.getItemIdAtPosition(i));
+
+                        }
+                    }
+                    tmpElementNames = getResources().getStringArray(R.array.architecturalElementsArray);
+                    for (int i = 0; i < tmpElementNames.length; i++) {
+                        if (elementName.equals(tmpElementNames[i])) {
+                            TextView tmpTextView = (TextView) architecturalListView.getChildAt(i);
+//                            tmpTextView.setTextColor(Color.RED);
+//                            tmpTextView.refreshDrawableState();
+                        }
+                    }
+                    tmpElementNames = getResources().getStringArray(R.array.auxiliaryElementsArray);
+                    for (int i = 0; i < tmpElementNames.length; i++) {
+                        if (elementName.equals(tmpElementNames[i])) {
+                            TextView tmpTextView = (TextView) auxiliaryListView.getChildAt(i);
+//                            tmpTextView.setTextColor(Color.RED);
+//                            tmpTextView.refreshDrawableState();
+                        }
+                    }
+                    tmpElementNames = getResources().getStringArray(R.array.roofElementsArray);
+                    for (int i = 0; i < tmpElementNames.length; i++) {
+                        if (elementName.equals(tmpElementNames[i])) {
+                            TextView tmpTextView = (TextView) roofListView.getChildAt(i);
+//                            tmpTextView.setTextColor(Color.RED);
+//                            tmpTextView.refreshDrawableState();
+                        }
+                    }
+
+                }
+            }
+        } catch (NullPointerException e) {
+            Toast.makeText(getApplicationContext(), "NullPointerException...", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
 
 
     }

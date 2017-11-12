@@ -18,7 +18,6 @@ public class ImageDownloadAsyncTask extends AsyncTask<String, Void, String> {
     private Context context;
     private ImageView imageView;
 
-    String myFileUrl1;
     private Bitmap bmImg;
 
     public ImageDownloadAsyncTask(Context context, ImageView imageView) {
@@ -99,11 +98,11 @@ public class ImageDownloadAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String args) {
-        // TODO Auto-generated method stub
 
 //        if (bmImg == null) {
 
         imageView.setImageBitmap(bmImg);
+
 
 //        Toast.makeText(context, "Image still loading...",
 //                Toast.LENGTH_SHORT).show();

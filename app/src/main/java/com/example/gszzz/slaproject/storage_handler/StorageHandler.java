@@ -76,7 +76,7 @@ public class StorageHandler {
                     String tmp = itemName + "_" + "ifElementExist";
                     editor.putBoolean(tmp, true);
 
-                    Toast.makeText(context, tmp, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, tmp, Toast.LENGTH_SHORT).show();
 
                     break;
                 case PAGE_BUILDING_SELECTION_FORM:
