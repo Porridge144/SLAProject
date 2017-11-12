@@ -103,6 +103,9 @@ public class LevelsForm extends AppCompatActivity {
 
                         ((TextView) view).setTextColor(Color.RED);
 
+                        //Reset room counts
+                        LevelPlan.resetRoomCounts();
+
                         intent.putExtra("floorPlanName", levelListRefined[i]);
                         intent.putExtra("surveyName", surveyName);
                         startActivity(intent);

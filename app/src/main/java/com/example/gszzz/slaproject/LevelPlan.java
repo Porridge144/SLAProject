@@ -88,23 +88,11 @@ public class LevelPlan extends AppCompatActivity{
                     @Override
                     public void onClick(View view) {
 
-//                        //Save room label in the shared preference file
-//                        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = sharedPreferences.edit();
-//                        editor.putString("roomLabelString", textView.getText().toString());
-
-//                        //Save room label into the room list of this specific level
-//                        String roomListAsLevelStringName = levelName + "_" + "RoomList";
-//                        String tmp = sharedPreferences.getString(roomListAsLevelStringName, "");
-//                        tmp += (textView.getText().toString() + ":");
-//                        editor.putString(roomListAsLevelStringName, tmp);
-//
-//                        editor.putInt(levelName + "_" + textView.getText().toString() + "_" + "leftMargin", leftMargin);
-//                        editor.putInt(levelName + "_" + textView.getText().toString() + "_" + "topMargin", topMargin);
-
-//                        editor.apply();
-
-//                        textView.setBackgroundColor(Color.RED);
+                        //Save room label in the shared preference file
+                        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("roomLabelString", textView.getText().toString());
+                        editor.apply();
 
                         Intent intent = new Intent(getApplicationContext(), BuildingDetailForm.class);
                         intent.putExtra("roomLabelString", textView.getText().toString());
@@ -117,6 +105,19 @@ public class LevelPlan extends AppCompatActivity{
 
                 relativeLayout.addView(textView, layoutParams);
             }
+        }
+
+        //Read room counts from saved values
+        String roomCountsString = sharedPreferences.getString(levelName + "_" + "RoomCountsString", "");
+        if (!roomCountsString.equals("")) {
+            String[] roomCounts = roomCountsString.split(":");
+            kitchenCount = Integer.valueOf(roomCounts[0]);
+            toiletCount = Integer.valueOf(roomCounts[1]);
+            roomCount = Integer.valueOf(roomCounts[2]);
+            corridorCount = Integer.valueOf(roomCounts[3]);
+            balconyCount = Integer.valueOf(roomCounts[4]);
+            patioCount = Integer.valueOf(roomCounts[5]);
+
         }
 
 
@@ -164,6 +165,7 @@ public class LevelPlan extends AppCompatActivity{
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
 //                        Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                         optionChosen = String.valueOf(adapterView.getItemAtPosition(i));
                         renderLabel(optionChosen);
@@ -255,6 +257,19 @@ public class LevelPlan extends AppCompatActivity{
         layoutParams.leftMargin = leftMargin;
         layoutParams.topMargin = topMargin;
 
+        String roomCountsString = String.valueOf(kitchenCount) + ":" +
+                                String.valueOf(toiletCount) + ":" +
+                                String.valueOf(roomCount) + ":" +
+                                String.valueOf(corridorCount) + ":" +
+                                String.valueOf(balconyCount) + ":" +
+                                String.valueOf(patioCount);
+
+        //Save room counts string
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(levelName + "_" + "RoomCountsString", roomCountsString);
+        editor.apply();
+
         relativeLayout.addView(textView, layoutParams);
 
     }
@@ -263,5 +278,14 @@ public class LevelPlan extends AppCompatActivity{
 //        Intent intent = new Intent(this, LevelsForm.class);
 //        startActivity(intent);
         finish();
+    }
+
+    public static void resetRoomCounts() {
+        roomCount = 1;
+        toiletCount = 1;
+        kitchenCount = 1;
+        corridorCount = 1;
+        balconyCount = 1;
+        patioCount = 1;
     }
 }
